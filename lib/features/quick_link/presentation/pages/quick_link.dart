@@ -90,8 +90,8 @@ class QuickLinkPage extends ConsumerWidget {
                                 IconWidget(),
                                 if (isSelected)
                                   Positioned(
-                                    bottom: 1,
-                                    right: 1,
+                                    bottom: 5,
+                                    right: 5,
                                     child: Icon(
                                       Icons.check_circle,
                                       color: Colors.green,
