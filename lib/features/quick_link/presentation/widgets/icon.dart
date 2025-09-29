@@ -9,11 +9,11 @@ class IconWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: SizeConfig.screenWidth * 0.13,
-          width: SizeConfig.screenWidth * 0.13,
+          height: SizeConfig.screenWidth * 0.12,
+          width: SizeConfig.screenWidth * 0.12,
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: Colors.black.withAlpha(100), width: 0.5),
+            border: Border.all(color: Colors.grey.withAlpha(100), width: 0.5),
             borderRadius: BorderRadius.circular(SizeConfig.screenWidth * 0.03),
           ),
           child: Padding(

@@ -58,8 +58,8 @@ class QuickLinkPage extends ConsumerWidget {
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.03),
             Wrap(
-              spacing: SizeConfig.screenWidth * 0.06,
-              runSpacing: SizeConfig.screenHeight * 0.035,
+              spacing: SizeConfig.screenWidth * 0.032,
+              runSpacing: SizeConfig.screenWidth * 0.035,
 
               children: List.generate(16, (index) {
                 final isSelected = selectedIndex.contains(index);
@@ -101,16 +101,16 @@ class QuickLinkPage extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: SizeConfig.screenWidth * 0.02),
+                      SizedBox(height: SizeConfig.screenWidth * 0.01),
 
                       SizedBox(
-                        width: SizeConfig.screenWidth * 0.18,
+                        width: SizeConfig.screenWidth * 0.2,
                         child: Text(
                           "Quick Link Label",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.screenWidth * 0.036,
+                            fontSize: SizeConfig.screenWidth * 0.028,
                           ),
                         ),
                       ),
