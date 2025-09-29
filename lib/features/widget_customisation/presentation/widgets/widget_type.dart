@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
 class WidgetType extends ConsumerWidget {
@@ -50,8 +49,8 @@ class WidgetType extends ConsumerWidget {
                     ),
                     Spacer(),
                     iconChange
-                        ? HugeIcon(icon: HugeIcons.strokeRoundedArrowUp01)
-                        : HugeIcon(icon: HugeIcons.strokeRoundedArrowDown01),
+                        ? Image.asset("assets/up.png")
+                        : Image.asset("assets/down.png"),
                   ],
                 ),
               ),
@@ -59,10 +58,7 @@ class WidgetType extends ConsumerWidget {
           ),
         ),
         SizedBox(width: SizeConfig.screenWidth * 0.01),
-        HugeIcon(
-          icon: HugeIcons.strokeRoundedDragDropHorizontal,
-          color: Colors.grey,
-        ),
+        Image.asset("assets/drag.png"),
       ],
     );
   }

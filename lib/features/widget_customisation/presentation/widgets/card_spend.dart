@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
 class CardSpend extends StatelessWidget {
@@ -74,11 +73,7 @@ class CardSpend extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            HugeIcon(
-                              icon: HugeIcons.strokeRoundedArrowUpRight03,
-                              size: SizeConfig.screenWidth * 0.04,
-                              strokeWidth: SizeConfig.screenWidth * 0.006,
-                            ),
+                            Image.asset("assets/upright.png"),
                           ],
                         ),
                       ),
