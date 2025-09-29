@@ -78,43 +78,45 @@ class QuickLinkPage extends ConsumerWidget {
                       return newState;
                     });
                   },
-                  child: Column(
-                    children: [
-                      AnimatedIconWidget(
-                        child: SizedBox(
-                          height: SizeConfig.screenWidth * 0.15,
-                          width: SizeConfig.screenWidth * 0.15,
-                          child: Stack(
-                            children: [
-                              IconWidget(),
-                              if (isSelected)
-                                Positioned(
-                                  bottom: 1,
-                                  right: 1,
-                                  child: Icon(
-                                    Icons.check_circle,
-                                    color: Colors.green,
-                                    size: SizeConfig.screenWidth * 0.046,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        AnimatedIconWidget(
+                          child: SizedBox(
+                            height: SizeConfig.screenWidth * 0.15,
+                            width: SizeConfig.screenWidth * 0.15,
+                            child: Stack(
+                              children: [
+                                IconWidget(),
+                                if (isSelected)
+                                  Positioned(
+                                    bottom: 1,
+                                    right: 1,
+                                    child: Icon(
+                                      Icons.check_circle,
+                                      color: Colors.green,
+                                      size: SizeConfig.screenWidth * 0.046,
+                                    ),
                                   ),
-                                ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: SizeConfig.screenWidth * 0.01),
+                        SizedBox(height: SizeConfig.screenWidth * 0.01),
 
-                      SizedBox(
-                        width: SizeConfig.screenWidth * 0.2,
-                        child: Text(
-                          "Quick Link Label",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: SizeConfig.screenWidth * 0.028,
+                        SizedBox(
+                          width: SizeConfig.screenWidth * 0.2,
+                          child: Text(
+                            "Quick Link Label",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: SizeConfig.screenWidth * 0.028,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               }),
