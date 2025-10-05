@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/utils/size_config.dart';
-
-import 'package:tasks/features/quick_link/presentation/controller/selection_provider.dart';
-import 'package:tasks/features/quick_link/presentation/widgets/animation_widget.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/button.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/icon.dart';
 
-class QuickLinkPage extends ConsumerWidget {
+class QuickLinkPage extends StatelessWidget {
   const QuickLinkPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     SizeConfig.init(context);
-    final selectedIndex = ref.watch(selectedIndexesProvider);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -57,70 +51,7 @@ class QuickLinkPage extends ConsumerWidget {
               ),
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.03),
-            Wrap(
-              spacing: SizeConfig.screenWidth * 0.032,
-              runSpacing: SizeConfig.screenWidth * 0.035,
-
-              children: List.generate(16, (index) {
-                final isSelected = selectedIndex.contains(index);
-
-                return GestureDetector(
-                  onTap: () {
-                    ref.read(selectedIndexesProvider.notifier).update((state) {
-                      final newState = {...state};
-                      if (newState.contains(index)) {
-                        newState.remove(index); //unselect
-                      } else {
-                        if (newState.length < 4) {
-                          newState.add(index); //add only if < 4
-                        }
-                      }
-                      return newState;
-                    });
-                  },
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        AnimatedIconWidget(
-                          child: SizedBox(
-                            height: SizeConfig.screenWidth * 0.15,
-                            width: SizeConfig.screenWidth * 0.15,
-                            child: Stack(
-                              children: [
-                                IconWidget(),
-                                if (isSelected)
-                                  Positioned(
-                                    bottom: 5,
-                                    right: 5,
-                                    child: Icon(
-                                      Icons.check_circle,
-                                      color: Colors.green,
-                                      size: SizeConfig.screenWidth * 0.046,
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: SizeConfig.screenWidth * 0.01),
-
-                        SizedBox(
-                          width: SizeConfig.screenWidth * 0.2,
-                          child: Text(
-                            "Quick Link Label",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: SizeConfig.screenWidth * 0.028,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ),
+            IconWidget(),
             Spacer(),
             Padding(
               padding: EdgeInsets.only(bottom: SizeConfig.screenWidth * 0.02),

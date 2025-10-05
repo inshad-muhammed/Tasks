@@ -106,11 +106,7 @@ class MenuPage extends ConsumerWidget {
                       icon: 'assets/icons/reach.png',
                       function: () {},
                     ),
-                    IconWidget(
-                      title: 'Invest',
-                      icon: 'assets/icons/invest.png',
-                      function: () {},
-                    ),
+
                     IconWidget(
                       title: 'Offer',
                       icon: 'assets/icons/offer.png',
@@ -168,14 +164,7 @@ class MenuPage extends ConsumerWidget {
                   ],
                 ),
                 SizedBox(height: SizeConfig.screenWidth * 0.04),
-                Text(
-                  "Version No 11.2.1.51",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig.screenWidth * 0.04,
-                  ),
-                ),
+
                 SizedBox(height: SizeConfig.screenWidth * 0.02),
                 // Divider(color: Colors.grey),
               ],

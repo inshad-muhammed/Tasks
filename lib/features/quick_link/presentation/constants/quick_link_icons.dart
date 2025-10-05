@@ -1,0 +1,18 @@
+final List<Map<String, dynamic>> labels = [
+  {'icon': "assets/quick_link_icons/eipo.svg", 'label': 'EIPO'},
+  {'icon': "assets/quick_link_icons/transfers.svg", 'label': 'Transfers'},
+  {'icon': "assets/quick_link_icons/stocks.svg", 'label': 'Stocks'},
+  {'icon': "assets/quick_link_icons/investments.svg", 'label': 'Investments'},
+  {'icon': "assets/quick_link_icons/products.svg", 'label': 'Products'},
+  {'icon': "assets/quick_link_icons/orders.svg", 'label': 'St. Orders'},
+  {'icon': "assets/quick_link_icons/requests.svg", 'label': 'Requests'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+  {'icon': "assets/quick_link_icons/default.svg", 'label': 'Quick Link Label'},
+];

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
+// ignore: must_be_immutable
 class FilterButton extends StatelessWidget {
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
+  bool unread;
 
-  const FilterButton({
+  FilterButton({
     super.key,
     required this.label,
     required this.isSelected,
     required this.onTap,
+    this.unread = false,
   });
 
   @override
@@ -30,13 +33,40 @@ class FilterButton extends StatelessWidget {
             width: 1,
           ),
         ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: SizeConfig.screenWidth * 0.03,
-            color: isSelected ? Colors.black : Colors.grey,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Row(
+          spacing: SizeConfig.screenWidth * 0.01,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: SizeConfig.screenWidth * 0.03,
+                color: isSelected ? Colors.black : Colors.grey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            unread
+                ? Container(
+                    height: SizeConfig.screenWidth * 0.03,
+                    width: SizeConfig.screenWidth * 0.03,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        SizeConfig.screenWidth * 1,
+                      ),
+                      color: Colors.red,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "2",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: SizeConfig.screenWidth * 0.016,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  )
+                : SizedBox(),
+          ],
         ),
       ),
     );

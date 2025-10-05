@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/pages/alerts_page.dart';
 import 'package:tasks/features/notification/presentation/pages/pending_action_page.dart';
+import 'package:tasks/features/notification/presentation/widgets/tab_content.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});
@@ -10,6 +11,7 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return DefaultTabController(
+      initialIndex: 0,
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -55,9 +57,9 @@ class NotificationPage extends StatelessWidget {
             indicatorSize: TabBarIndicatorSize.tab,
             labelColor: Colors.black,
             tabs: [
-              Tab(text: "Pending Actions"),
+              Tab(child: TabContent(0, "Pending Actions")),
 
-              Tab(text: "Alerts"),
+              Tab(child: TabContent(1, "Alerts")),
             ],
           ),
         ),

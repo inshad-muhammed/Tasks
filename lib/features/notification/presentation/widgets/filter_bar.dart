@@ -22,6 +22,7 @@ class FilterBar extends ConsumerWidget {
           },
         ),
         FilterButton(
+          unread: true,
           label: "Unread",
           isSelected: selectedFilter == NotificationFilter.unread,
           onTap: () {
@@ -42,7 +43,11 @@ class FilterBar extends ConsumerWidget {
           onTap: () {},
           child: Row(
             children: [
-              Image.asset("assets/read.png"),
+              Image.asset(
+                "assets/read.png",
+                height: SizeConfig.screenWidth * 0.05,
+                width: SizeConfig.screenWidth * 0.05,
+              ),
               Text(
                 "Mark All As Read",
                 style: TextStyle(
