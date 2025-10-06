@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/widgets/highlited_text.dart';
 
@@ -25,13 +26,14 @@ class NotificationCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(SizeConfig.screenWidth * 0.03),
       decoration: BoxDecoration(
-        color: unread ? Colors.white : Colors.grey.shade200,
+        color: unread ? Colors.white : Color(0xffF5FBFF),
         borderRadius: BorderRadius.circular(SizeConfig.screenWidth * 0.03),
-        border: Border.all(color: Colors.grey.shade200, width: 1),
+        border: Border.all(
+          color: unread ? Color(0xffC6E0EF) : Color(0xffF5FBFF),
+          width: 1,
+        ),
       ),
       child: Row(
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        // mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
             height: SizeConfig.screenWidth * 0.084,
@@ -40,7 +42,12 @@ class NotificationCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(SizeConfig.screenWidth * 0.5),
               border: Border.all(color: Color(0xff4197CB)),
             ),
-            child: Image.asset("assets/$notificationtype.png"),
+            child: Padding(
+              padding: EdgeInsets.all(SizeConfig.screenWidth * 0.016),
+              child: SvgPicture.asset(
+                "assets/notification_icons/$notificationtype.svg",
+              ),
+            ),
           ),
           SizedBox(width: SizeConfig.screenWidth * 0.03),
           Expanded(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/utils/size_config.dart';
-import 'package:tasks/features/notification/presentation/controllers/tab_index_provider.dart';
 
 class TabContent extends ConsumerWidget {
   final int index;
@@ -11,27 +10,24 @@ class TabContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIndex = ref.watch(tabIndexProvider);
-    final isSelected = selectedIndex == index;
-
     return Row(
       spacing: SizeConfig.screenWidth * 0.02,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(title),
         Container(
-          height: SizeConfig.screenWidth * 0.03,
-          width: SizeConfig.screenWidth * 0.03,
+          height: SizeConfig.screenWidth * 0.04,
+          width: SizeConfig.screenWidth * 0.04,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(SizeConfig.screenWidth * 1),
-            color: isSelected ? Colors.red : Colors.grey,
+            color: index == 0 ? Color(0xff4197CB) : Colors.red,
           ),
           child: Center(
             child: Text(
               "2",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: SizeConfig.screenWidth * 0.016,
+                fontSize: SizeConfig.screenWidth * 0.02,
                 fontWeight: FontWeight.w500,
               ),
             ),

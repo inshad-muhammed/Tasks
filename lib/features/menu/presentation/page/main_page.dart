@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/menu/presentation/controller/bottom_navbar_provider.dart';
 import 'package:tasks/features/menu/presentation/page/menu_page.dart';
@@ -9,6 +10,7 @@ class MainPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    SizeConfig.init(context);
     final bottomNavbarIndex = ref.watch(bottomNavbarProvider);
     final List<Widget> pages = [
       Center(child: Text("Home Page")),
@@ -48,19 +50,19 @@ class MainPage extends ConsumerWidget {
 
             items: [
               BottomNavigationBarItem(
-                icon: Image.asset("assets/home.png"),
+                icon: SvgPicture.asset("assets/menu_icons/home.svg"),
                 label: "Home",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/offers.png"),
+                icon: SvgPicture.asset("assets/menu_icons/offers.svg"),
                 label: "Offers",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/pay.png"),
+                icon: SvgPicture.asset("assets/menu_icons/pay.svg"),
                 label: "Pay",
               ),
               BottomNavigationBarItem(
-                icon: Image.asset("assets/wallet.png"),
+                icon: SvgPicture.asset("assets/menu_icons/wallet.svg"),
                 label: "Wallet",
               ),
               BottomNavigationBarItem(icon: Icon(Icons.close), label: "Menu"),

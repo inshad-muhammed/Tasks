@@ -20,7 +20,7 @@ class QuickLinkPage extends StatelessWidget {
           "Customize Quick Links",
           style: TextStyle(
             color: const Color(0xff0D3E7F),
-            fontSize: SizeConfig.screenWidth * 0.05,
+            fontSize: SizeConfig.screenWidth * 0.046,
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -38,7 +38,7 @@ class QuickLinkPage extends StatelessWidget {
               "Select upto 4 Options",
               style: TextStyle(
                 color: Colors.black,
-                fontSize: SizeConfig.screenWidth * 0.06,
+                fontSize: SizeConfig.screenWidth * 0.056,
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -46,7 +46,7 @@ class QuickLinkPage extends StatelessWidget {
               "You want have quick acces to",
               style: TextStyle(
                 color: Colors.black,
-                fontSize: SizeConfig.screenWidth * 0.04,
+                fontSize: SizeConfig.screenWidth * 0.036,
                 fontWeight: FontWeight.w600,
               ),
             ),

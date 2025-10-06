@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
 class IconWidget extends StatelessWidget {
@@ -29,7 +30,11 @@ class IconWidget extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.all(SizeConfig.screenWidth * 0.045),
-              child: Image.asset(icon, color: Colors.black, fit: BoxFit.cover),
+              child: SvgPicture.asset(
+                icon,
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+              ),
             ),
           ),
           SizedBox(height: SizeConfig.screenWidth * 0.015),

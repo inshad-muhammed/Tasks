@@ -98,18 +98,18 @@ class MenuPage extends ConsumerWidget {
                   children: [
                     IconWidget(
                       title: 'Requests',
-                      icon: 'assets/icons/requests.png',
+                      icon: 'assets/menu_icons/request.svg',
                       function: () {},
                     ),
                     IconWidget(
                       title: 'Reach Us',
-                      icon: 'assets/icons/reach.png',
+                      icon: 'assets/menu_icons/reachus.svg',
                       function: () {},
                     ),
 
                     IconWidget(
                       title: 'Offer',
-                      icon: 'assets/icons/offer.png',
+                      icon: 'assets/menu_icons/offers.svg',
                       function: () {},
                     ),
                   ],
@@ -158,7 +158,7 @@ class MenuPage extends ConsumerWidget {
                     ),
                     IconWidget(
                       title: "Logout",
-                      icon: "assets/icons/logout.png",
+                      icon: "assets/menu_icons/logout.svg",
                       function: () {},
                     ),
                   ],

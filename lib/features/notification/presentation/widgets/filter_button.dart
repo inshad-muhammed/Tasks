@@ -52,7 +52,7 @@ class FilterButton extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                         SizeConfig.screenWidth * 1,
                       ),
-                      color: Colors.red,
+                      color: Color(0xff4197CB),
                     ),
                     child: Center(
                       child: Text(
