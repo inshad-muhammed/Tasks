@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tasks/features/bottom_sheet/presentation/page/bottom_sheet.dart';
 import 'package:tasks/features/menu/presentation/page/main_page.dart';
 import 'package:tasks/features/notification/presentation/pages/notification_page.dart';
 import 'package:tasks/features/quick_link/presentation/pages/quick_link.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MainPage(),
+      home: BiometricBottomSheet(),
     );
   }
 }
