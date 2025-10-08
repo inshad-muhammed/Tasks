@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
-import 'package:tasks/features/notification/presentation/pages/pending_action_page.dart';
+import 'package:tasks/features/notification/presentation/pages/notifications.dart';
 
 class NotificationPage extends ConsumerWidget {
   const NotificationPage({super.key});
@@ -71,7 +71,7 @@ class NotificationPage extends ConsumerWidget {
           right: SizeConfig.screenWidth * 0.04,
         ),
 
-        child: PendingActionPage(),
+        child: Notifications(),
       ),
     );
   }

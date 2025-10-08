@@ -8,8 +8,8 @@ import 'package:tasks/features/notification/presentation/widgets/notification_ca
 import 'package:tasks/features/notification/presentation/widgets/section_header.dart';
 import 'package:tasks/features/notification/presentation/widgets/selction_bar.dart';
 
-class PendingActionPage extends ConsumerWidget {
-  const PendingActionPage({super.key});
+class Notifications extends ConsumerWidget {
+  const Notifications({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
