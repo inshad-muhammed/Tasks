@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tasks/core/utils/size_config.dart';
+import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
 import 'package:tasks/features/notification/presentation/widgets/highlited_text.dart';
 
-class NotificationCard extends StatelessWidget {
+class NotificationCard extends ConsumerWidget {
   final String message;
   final List<String> highlights;
   final String time;
   final String notificationtype;
   final bool unread;
   final bool showButton;
+  final bool isSelected;
+  final String? id;
 
   const NotificationCard({
     super.key,
@@ -19,10 +23,13 @@ class NotificationCard extends StatelessWidget {
     this.unread = false,
     this.showButton = false,
     required this.notificationtype,
+    this.isSelected = false,
+    required this.id,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isSelectionMode = ref.watch(selectionModeProvider);
     return Container(
       padding: EdgeInsets.all(SizeConfig.screenWidth * 0.03),
       decoration: BoxDecoration(
@@ -40,14 +47,24 @@ class NotificationCard extends StatelessWidget {
             width: SizeConfig.screenWidth * 0.084,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(SizeConfig.screenWidth * 0.5),
-              border: Border.all(color: Color(0xff4197CB)),
+              border: isSelectionMode
+                  ? null
+                  : Border.all(color: Color(0xff4197CB)),
             ),
-            child: Padding(
-              padding: EdgeInsets.all(SizeConfig.screenWidth * 0.016),
-              child: SvgPicture.asset(
-                "assets/notification_icons/$notificationtype.svg",
-              ),
-            ),
+            child: isSelectionMode
+                ? Center(
+                    child: Icon(
+                      Icons.check_circle,
+                      size: SizeConfig.screenWidth * 0.056,
+                      color: isSelected ? Colors.green : Colors.grey,
+                    ),
+                  )
+                : Padding(
+                    padding: EdgeInsets.all(SizeConfig.screenWidth * 0.016),
+                    child: SvgPicture.asset(
+                      "assets/notification_icons/$notificationtype.svg",
+                    ),
+                  ),
           ),
           SizedBox(width: SizeConfig.screenWidth * 0.03),
           Expanded(

@@ -1,69 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/utils/size_config.dart';
-import 'package:tasks/features/notification/presentation/pages/alerts_page.dart';
+import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
 import 'package:tasks/features/notification/presentation/pages/pending_action_page.dart';
-import 'package:tasks/features/notification/presentation/widgets/tab_content.dart';
 
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends ConsumerWidget {
   const NotificationPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     SizeConfig.init(context);
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        toolbarHeight: SizeConfig.screenWidth * 0.16,
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: Icon(Icons.arrow_back, size: SizeConfig.screenWidth * 0.06),
-          leadingWidth: SizeConfig.screenWidth * 0.15,
-          titleSpacing: 0,
-          title: Text(
-            "Notifications (2)",
-            style: TextStyle(
-              color: const Color(0xff0D3E7F),
-              fontSize: SizeConfig.screenWidth * 0.045,
-              fontWeight: FontWeight.w900,
-            ),
+        leading: Icon(Icons.arrow_back, size: SizeConfig.screenWidth * 0.06),
+        leadingWidth: SizeConfig.screenWidth * 0.15,
+        titleSpacing: 0,
+        title: Text(
+          "Notifications (2)",
+          style: TextStyle(
+            color: const Color(0xff0D3E7F),
+            fontSize: SizeConfig.screenWidth * 0.045,
+            fontWeight: FontWeight.w900,
           ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Container(
-                height: SizeConfig.screenWidth * 0.08,
-                width: SizeConfig.screenWidth * 0.08,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    SizeConfig.screenWidth * 0.5,
-                  ),
-                  border: Border.all(color: Color(0xff446193)),
-                ),
-                child: Icon(
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Row(
+              spacing: SizeConfig.screenWidth * 0.03,
+              children: [
+                Icon(
                   Icons.settings_outlined,
                   color: const Color(0xff446193),
                   size: SizeConfig.screenWidth * 0.06,
                 ),
-              ),
-            ),
-          ],
-          bottom: TabBar(
-            dividerColor: Colors.grey.withAlpha(100),
-            indicatorColor: Color(0xff4197CB),
-            indicatorPadding: EdgeInsetsGeometry.symmetric(
-              horizontal: SizeConfig.screenWidth * 0.04,
-            ),
-            indicatorSize: TabBarIndicatorSize.tab,
-            labelColor: Colors.black,
-            tabs: [
-              Tab(child: TabContent(0, "Pending Actions")),
+                PopupMenuButton(
+                  offset: Offset(0, kToolbarHeight),
+                  color: Colors.white,
 
-              Tab(child: TabContent(1, "Alerts")),
-            ],
+                  onSelected: (value) {
+                    if (value == 'Select') {
+                      ref.read(selectionModeProvider.notifier).state = true;
+                    }
+                  },
+                  itemBuilder: (BuildContext context) => [
+                    PopupMenuItem(
+                      value: 'Select',
+                      child: Text("Select Notifiactions"),
+                    ),
+                    PopupMenuItem(value: 'More', child: Text("<More Options>")),
+                  ],
+                  child: Icon(Icons.more_vert),
+                ),
+              ],
+            ),
           ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(2),
+          child: Divider(height: 2, color: Colors.grey.shade300),
         ),
-        body: TabBarView(children: [PendingActionPage(), AlertsPage()]),
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(
+          top: SizeConfig.screenWidth * 0.04,
+          left: SizeConfig.screenWidth * 0.04,
+          right: SizeConfig.screenWidth * 0.04,
+        ),
+
+        child: PendingActionPage(),
       ),
     );
   }

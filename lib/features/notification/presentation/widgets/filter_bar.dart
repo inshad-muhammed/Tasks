@@ -10,56 +10,61 @@ class FilterBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedFilter = ref.watch(notificationFilterProvider);
-    return Row(
-      spacing: SizeConfig.screenWidth * 0.01,
-      children: [
-        FilterButton(
-          label: "All",
-          isSelected: selectedFilter == NotificationFilter.all,
-          onTap: () {
-            ref.read(notificationFilterProvider.notifier).state =
-                NotificationFilter.all;
-          },
-        ),
-        FilterButton(
-          unread: true,
-          label: "Unread",
-          isSelected: selectedFilter == NotificationFilter.unread,
-          onTap: () {
-            ref.read(notificationFilterProvider.notifier).state =
-                NotificationFilter.unread;
-          },
-        ),
-        FilterButton(
-          label: "Read",
-          isSelected: selectedFilter == NotificationFilter.read,
-          onTap: () {
-            ref.read(notificationFilterProvider.notifier).state =
-                NotificationFilter.read;
-          },
-        ),
-        Spacer(),
-        GestureDetector(
-          onTap: () {},
-          child: Row(
-            children: [
-              Image.asset(
-                "assets/read.png",
-                height: SizeConfig.screenWidth * 0.05,
-                width: SizeConfig.screenWidth * 0.05,
-              ),
-              Text(
-                "Mark All As Read",
-                style: TextStyle(
-                  color: Color(0xff4197CB),
-                  fontSize: SizeConfig.screenWidth * 0.03,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+    return SizedBox(
+      height: SizeConfig.screenWidth * 0.12,
+      child: Row(
+        spacing: SizeConfig.screenWidth * 0.01,
+        children: [
+          FilterButton(
+            label: "All",
+            isSelected: selectedFilter == NotificationFilter.all,
+            onTap: () {
+              ref.read(notificationFilterProvider.notifier).state =
+                  NotificationFilter.all;
+            },
           ),
-        ),
-      ],
+          FilterButton(
+            unread: true,
+            label: "Unread",
+            isSelected: selectedFilter == NotificationFilter.unread,
+            onTap: () {
+              ref.read(notificationFilterProvider.notifier).state =
+                  NotificationFilter.unread;
+            },
+          ),
+          FilterButton(
+            label: "Read",
+            isSelected: selectedFilter == NotificationFilter.read,
+            onTap: () {
+              ref.read(notificationFilterProvider.notifier).state =
+                  NotificationFilter.read;
+            },
+          ),
+          Spacer(),
+          GestureDetector(
+            onTap: () {},
+            child: Row(
+              children: [
+                Icon(
+                  Icons.done_all,
+                  color: Color(0xff4197CB),
+                  size: SizeConfig.screenWidth * 0.04,
+                ),
+                SizedBox(width: SizeConfig.screenWidth * 0.008),
+
+                Text(
+                  "Mark All As Read",
+                  style: TextStyle(
+                    color: Color(0xff4197CB),
+                    fontSize: SizeConfig.screenWidth * 0.03,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
