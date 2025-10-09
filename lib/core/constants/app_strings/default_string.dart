@@ -5,6 +5,6 @@ class DefaultStrings {
   DefaultStrings._();
 
   String get(String key, {required String fallback}) {
-    return I18nBinder.current[key] ?? fallback;
+    return fallback;
   }
 }

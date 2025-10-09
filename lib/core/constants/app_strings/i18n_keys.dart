@@ -65,4 +65,17 @@ class I18nKeys {
   String get quickLinkLabel7 => "quickLinkLabel7";
   String get quickLinkLabel8 => "quickLinkLabel8";
   String get quickLinkButtonText => "quickLinkButtonText";
+
+  //Widget Customisation Page Strings
+  String get customiseWidgetTitle => "customiseWidgetTitle";
+  String get customiseWidgetHeader => "customiseWidgetHeader";
+  String get pinnedItem1 => "pinnedItem1";
+  String get pinnedItem2 => "pinnedItem2";
+  String get pinnedItem3 => "pinnedItem3";
+  String get activeBillerCardTitle => "activeBillerCardTitle";
+  String get activeBillerCardDescription => "activeBillerCardDescription";
+  String get cardSpendTitle => "cardSpendTitle";
+  String get cardSpendDescription => "cardSpendDescription";
+  String get cardSpendButtonText => "cardSpendButtonText";
+  String get creditCardbillDescription => "creditCardbillDescription";
 }
