@@ -1,0 +1,10 @@
+import 'i18n_keys.dart';
+
+class DefaultStrings {
+  static final DefaultStrings instance = DefaultStrings._();
+  DefaultStrings._();
+
+  String get(String key, {required String fallback}) {
+    return I18nBinder.current[key] ?? fallback;
+  }
+}
