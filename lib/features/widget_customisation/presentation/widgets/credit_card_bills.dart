@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/widget_customisation.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
 class CreditCardBills extends StatelessWidget {
@@ -6,6 +8,7 @@ class CreditCardBills extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = DefaultStrings.instance;
     return Container(
       width: double.infinity,
       height: SizeConfig.screenWidth * 0.24,
@@ -42,7 +45,7 @@ class CreditCardBills extends StatelessWidget {
                 ),
                 SizedBox(width: SizeConfig.screenWidth * 0.08),
                 Text(
-                  "No Bills to show yet.",
+                  s.creditCardbillDescription,
                   style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.w500,

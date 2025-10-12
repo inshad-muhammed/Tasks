@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/widget_customisation.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/widget_customisation/presentation/controllers/show_state_providers.dart';
 import 'package:tasks/features/widget_customisation/presentation/widgets/active_billers.dart';
@@ -12,6 +14,7 @@ class CustomiseWidgetPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = DefaultStrings.instance;
     final activeBillState = ref.watch(activeBillProvider);
     final cardSpendState = ref.watch(cardSpendProvider);
     final creditCardBillState = ref.watch(creditCardProvider);
@@ -24,7 +27,7 @@ class CustomiseWidgetPage extends ConsumerWidget {
         leadingWidth: SizeConfig.screenWidth * 0.15,
         titleSpacing: 0,
         title: Text(
-          "Customise Widgets",
+          s.widgetCustomisationTitle,
           style: TextStyle(
             color: const Color.fromARGB(255, 59, 93, 121),
             fontSize: SizeConfig.screenWidth * 0.05,
@@ -62,7 +65,7 @@ class CustomiseWidgetPage extends ConsumerWidget {
               children: [
                 SizedBox(height: SizeConfig.screenWidth * 0.08),
                 Text(
-                  "Pinned",
+                  s.header,
                   style: TextStyle(
                     fontSize: SizeConfig.screenWidth * 0.044,
                     fontWeight: FontWeight.bold,
@@ -71,7 +74,7 @@ class CustomiseWidgetPage extends ConsumerWidget {
                 SizedBox(height: SizeConfig.screenWidth * 0.04),
                 WidgetType(
                   activeBillProvider,
-                  cardType: "Your Active Billers",
+                  cardType: s.pinnedItem1,
                   function: () {
                     ref.read(activeBillProvider.notifier).state =
                         !activeBillState;
@@ -89,7 +92,7 @@ class CustomiseWidgetPage extends ConsumerWidget {
 
                 WidgetType(
                   cardSpendProvider,
-                  cardType: "Card Spends",
+                  cardType: s.cardSpendTitle,
                   function: () {
                     ref.read(cardSpendProvider.notifier).state =
                         !cardSpendState;
@@ -107,7 +110,7 @@ class CustomiseWidgetPage extends ConsumerWidget {
 
                 WidgetType(
                   creditCardProvider,
-                  cardType: "Credit Card Bills",
+                  cardType: s.creditCardbillDescription,
                   function: () {
                     ref.read(creditCardProvider.notifier).state =
                         !creditCardBillState;

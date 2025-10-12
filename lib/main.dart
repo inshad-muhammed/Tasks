@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tasks/features/bottom_sheet/presentation/page/bottom_sheet.dart';
+import 'package:tasks/features/menu/presentation/page/main_page.dart';
 import 'package:tasks/features/notification/presentation/pages/notification_page.dart';
+import 'package:tasks/features/quick_link/presentation/pages/quick_link.dart';
+import 'package:tasks/features/widget_customisation/presentation/pages/customise_widget.dart';
 
 void main() {
-  runApp(ProviderScope(child: I18nBinder(child: const MyApp())));
-}
-
-class I18nBinder extends StatelessWidget {
-  final Widget child;
-  const I18nBinder({super.key, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return child;
-  }
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +23,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: NotificationPage(),
+      home: const NotificationPage(),
     );
   }
 }

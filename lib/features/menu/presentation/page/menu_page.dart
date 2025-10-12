@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/menu_page.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/menu/presentation/controller/toggle_state_provider.dart';
 import 'package:tasks/features/menu/presentation/widget/icons.dart';
@@ -13,6 +15,7 @@ class MenuPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SizeConfig.init(context);
+    final s = DefaultStrings.instance;
     final themeIndex = ref.watch(themeToggleProvider);
     final languageIndex = ref.watch(languageToggleProvider);
     return Scaffold(
@@ -39,14 +42,14 @@ class MenuPage extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Alqabiadi",
+                          s.userName,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: SizeConfig.screenWidth * 0.046,
                           ),
                         ),
                         Text(
-                          "View Profile",
+                          s.viewProfileButtonText,
                           style: TextStyle(color: Colors.blue),
                         ),
                       ],
@@ -76,19 +79,19 @@ class MenuPage extends ConsumerWidget {
                   children: [
                     ItemCard(
                       image: "assets/images/accounts.png",
-                      title: 'Accounts',
+                      title: s.itemCard1Title,
                     ),
                     ItemCard(
                       image: "assets/images/credit1.png",
-                      title: 'Credit Cards',
+                      title: s.itemCard2Title,
                     ),
                     ItemCard(
                       image: "assets/images/deposits.png",
-                      title: 'Deposits',
+                      title: s.itemCard3Title,
                     ),
                     ItemCard(
                       image: "assets/images/finance.png",
-                      title: 'Finance',
+                      title: s.itemCard4Title,
                     ),
                   ],
                 ),
@@ -97,18 +100,18 @@ class MenuPage extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconWidget(
-                      title: 'Requests',
+                      title: s.requestsIconTitle,
                       icon: 'assets/menu_icons/request.svg',
                       function: () {},
                     ),
                     IconWidget(
-                      title: 'Reach Us',
+                      title: s.reachUsIconTitle,
                       icon: 'assets/menu_icons/reachus.svg',
                       function: () {},
                     ),
 
                     IconWidget(
-                      title: 'Offer',
+                      title: s.offerIconTitle,
                       icon: 'assets/menu_icons/offers.svg',
                       function: () {},
                     ),
@@ -135,18 +138,18 @@ class MenuPage extends ConsumerWidget {
                       activeColor: Colors.grey.shade700,
                       onChanged: (index) =>
                           ref.read(themeToggleProvider.notifier).state = index,
-                      title: 'Themes',
+                      title: s.segmentedToggleTitle1,
                     ),
 
                     SegmentedToggle(
-                      options: const [
+                      options: [
                         Text(
-                          "عربي",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          s.toggleLanguageOption2,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "English",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          s.toggleLanguageOption1,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                       selectedIndex: languageIndex,
@@ -154,10 +157,10 @@ class MenuPage extends ConsumerWidget {
                       onChanged: (index) =>
                           ref.read(languageToggleProvider.notifier).state =
                               index,
-                      title: 'Language',
+                      title: s.segmentedToggleTitle2,
                     ),
                     IconWidget(
-                      title: "Logout",
+                      title: s.logoutIconTitle,
                       icon: "assets/menu_icons/logout.svg",
                       function: () {},
                     ),

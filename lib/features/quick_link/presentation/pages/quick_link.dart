@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/quick_link_page.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/button.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/icon.dart';
@@ -8,6 +10,7 @@ class QuickLinkPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = DefaultStrings.instance;
     SizeConfig.init(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -17,7 +20,7 @@ class QuickLinkPage extends StatelessWidget {
         leadingWidth: SizeConfig.screenWidth * 0.15,
         titleSpacing: 0,
         title: Text(
-          "Customize Quick Links",
+          s.quickLinkTitle,
           style: TextStyle(
             color: const Color(0xff0D3E7F),
             fontSize: SizeConfig.screenWidth * 0.046,
@@ -35,7 +38,7 @@ class QuickLinkPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Select upto 4 Options",
+              s.quickLinkSubtitle,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: SizeConfig.screenWidth * 0.056,
@@ -43,7 +46,7 @@ class QuickLinkPage extends StatelessWidget {
               ),
             ),
             Text(
-              "You want have quick acces to",
+              s.quickLinkSubtitle1,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: SizeConfig.screenWidth * 0.036,

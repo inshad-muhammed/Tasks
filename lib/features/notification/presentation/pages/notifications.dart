@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/notification.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/constants/notifications.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
@@ -13,6 +15,7 @@ class Notifications extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = DefaultStrings.instance;
     int idCounter = 0;
     final isSelectionMode = ref.watch(selectionModeProvider);
     final selected = ref.watch(selectedNotificationsProvider);
@@ -35,8 +38,8 @@ class Notifications extends ConsumerWidget {
                     itemCount: notificationSections.length,
                     itemBuilder: (context, sectionIndex) {
                       final section = notificationSections[sectionIndex];
-                      final sectionTitle = section["date"];
-                      final List notifications = section["notifications"];
+                      final sectionTitle = section[s.section1];
+                      final List notifications = section[s.section2];
 
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

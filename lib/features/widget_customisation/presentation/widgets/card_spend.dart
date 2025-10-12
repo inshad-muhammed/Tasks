@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/widget_customisation.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
 class CardSpend extends StatelessWidget {
@@ -6,6 +8,7 @@ class CardSpend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = DefaultStrings.instance;
     return Container(
       width: double.infinity,
       height: SizeConfig.screenWidth * 0.6,
@@ -41,7 +44,7 @@ class CardSpend extends StatelessWidget {
                     width: SizeConfig.screenWidth * 0.22,
                   ),
                   Text(
-                    "Nothing to track here yet.",
+                    s.cardSpendDescription,
                     style: TextStyle(
                       fontSize: SizeConfig.screenWidth * 0.03,
                       color: Colors.grey,
@@ -67,7 +70,7 @@ class CardSpend extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "View all spends",
+                              s.cardSpendButtonText,
                               style: TextStyle(
                                 fontSize: SizeConfig.screenWidth * 0.03,
                                 fontWeight: FontWeight.w500,
@@ -99,7 +102,7 @@ class CardSpend extends StatelessWidget {
                     horizontal: SizeConfig.screenWidth * 0.04,
                   ),
                   child: Text(
-                    "Your recent Spends",
+                    s.cardSpendTitle,
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: SizeConfig.screenWidth * 0.028,

@@ -1,5 +1,3 @@
-import 'i18n_keys.dart';
-
 class DefaultStrings {
   static final DefaultStrings instance = DefaultStrings._();
   DefaultStrings._();

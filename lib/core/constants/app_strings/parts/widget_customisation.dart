@@ -1,7 +1,7 @@
 import 'package:tasks/core/constants/app_strings/default_string.dart';
 
 extension WidgetCustomisationStrings on DefaultStrings {
-  String get title =>
+  String get widgetCustomisationTitle =>
       get("widgetCustomisationTitle", fallback: "Widget Customisation");
   String get header => get("widgetCustomisationHeader", fallback: "Pinned");
   String get pinnedItem1 => get("pinnedItem1", fallback: "Active Billers");

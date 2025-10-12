@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/widget_customisation.dart';
 import 'package:tasks/core/utils/size_config.dart';
 
 class BillerCard extends StatelessWidget {
@@ -6,6 +8,7 @@ class BillerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = DefaultStrings.instance;
     return Container(
       width: double.infinity,
       height: SizeConfig.screenWidth * 0.3,
@@ -31,7 +34,7 @@ class BillerCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "No Billers added!",
+                      s.activeBillerCardTitle,
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -41,7 +44,7 @@ class BillerCard extends StatelessWidget {
                     SizedBox(
                       width: SizeConfig.screenWidth * 0.395,
                       child: Text(
-                        "Add to manage billers right from your dashboard.",
+                        s.activeBillerCardDescription,
                         style: TextStyle(
                           fontSize: SizeConfig.screenWidth * 0.028,
                           color: Colors.grey,

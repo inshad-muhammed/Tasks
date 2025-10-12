@@ -4,11 +4,13 @@ import 'package:tasks/core/constants/app_strings/i18n_keys.dart';
 extension NotificationPageString on DefaultStrings {
   String get pageTitle =>
       get(I18nKeys().notificationTitle, fallback: "Notifications");
-  String get emptyStateTitle =>
+  String get moreOption1 =>
       get(I18nKeys().moreOption1, fallback: "Select Notifications");
-  String get emptyStateSubtitle =>
+  String get moreOption2 =>
       get(I18nKeys().moreOption2, fallback: "More Options");
-  String get emptyStateButtonText => get(
+  String get section1 => get(I18nKeys().section1, fallback: "date");
+  String get section2 => get(I18nKeys().section2, fallback: "notifications");
+  String get successfulTransactionMessage => get(
     I18nKeys().succesfulTransactionMessage,
     fallback:
         "Your Recent Transaction of 230 QAR at Pizzapoint has been succesful",
@@ -56,4 +58,6 @@ extension NotificationPageString on DefaultStrings {
   String get filterOption3 => get(I18nKeys().filterOption3, fallback: "Read");
   String get timeOfMessage =>
       get(I18nKeys().timeOfMessage, fallback: "10:30 AM");
+  String get snackBarMessage =>
+      get(I18nKeys().snackBarMessage, fallback: "Messages Deleted");
 }

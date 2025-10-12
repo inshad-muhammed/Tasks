@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/notification.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
 import 'package:tasks/features/notification/presentation/widgets/highlited_text.dart';
@@ -29,6 +31,7 @@ class NotificationCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = DefaultStrings.instance;
     final isSelectionMode = ref.watch(selectionModeProvider);
     return Container(
       padding: EdgeInsets.all(SizeConfig.screenWidth * 0.03),
@@ -107,7 +110,7 @@ class NotificationCard extends ConsumerWidget {
                     ),
                   ),
                   child: Text(
-                    "Pay",
+                    s.payButtonText,
                     style: TextStyle(fontSize: SizeConfig.screenWidth * 0.03),
                   ),
                 ),

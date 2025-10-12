@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/menu_page.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/menu/presentation/controller/bottom_navbar_provider.dart';
 import 'package:tasks/features/menu/presentation/page/menu_page.dart';
@@ -11,6 +13,7 @@ class MainPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SizeConfig.init(context);
+    final s = DefaultStrings.instance;
     final bottomNavbarIndex = ref.watch(bottomNavbarProvider);
     final List<Widget> pages = [
       Center(child: Text("Home Page")),
@@ -51,21 +54,24 @@ class MainPage extends ConsumerWidget {
             items: [
               BottomNavigationBarItem(
                 icon: SvgPicture.asset("assets/menu_icons/home.svg"),
-                label: "Home",
+                label: s.botttomNavBarItem1,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset("assets/menu_icons/offers.svg"),
-                label: "Offers",
+                label: s.botttomNavBarItem2,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset("assets/menu_icons/pay.svg"),
-                label: "Pay",
+                label: s.botttomNavBarItem3,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset("assets/menu_icons/wallet.svg"),
-                label: "Wallet",
+                label: s.botttomNavBarItem4,
               ),
-              BottomNavigationBarItem(icon: Icon(Icons.close), label: "Menu"),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.close),
+                label: s.botttomNavBarItem5,
+              ),
             ],
           ),
         ),

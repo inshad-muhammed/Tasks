@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/notification.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
 import 'package:tasks/features/notification/presentation/pages/notifications.dart';
@@ -10,6 +12,7 @@ class NotificationPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     SizeConfig.init(context);
+    final s = DefaultStrings.instance;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -19,7 +22,7 @@ class NotificationPage extends ConsumerWidget {
         leadingWidth: SizeConfig.screenWidth * 0.15,
         titleSpacing: 0,
         title: Text(
-          "Notifications (2)",
+          s.pageTitle,
           style: TextStyle(
             color: const Color(0xff0D3E7F),
             fontSize: SizeConfig.screenWidth * 0.045,
@@ -47,11 +50,8 @@ class NotificationPage extends ConsumerWidget {
                     }
                   },
                   itemBuilder: (BuildContext context) => [
-                    PopupMenuItem(
-                      value: 'Select',
-                      child: Text("Select Notifiactions"),
-                    ),
-                    PopupMenuItem(value: 'More', child: Text("<More Options>")),
+                    PopupMenuItem(value: 'Select', child: Text(s.moreOption1)),
+                    PopupMenuItem(value: 'More', child: Text(s.moreOption2)),
                   ],
                   child: Icon(Icons.more_vert),
                 ),

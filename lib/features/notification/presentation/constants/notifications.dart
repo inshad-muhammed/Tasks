@@ -1,106 +1,112 @@
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/notification.dart';
+
+final s = DefaultStrings.instance;
 final List<Map<String, dynamic>> notificationSections = [
   {
-    "date": "Today",
-    "notifications": [
+    s.section1: s.dateOfMessageToday,
+    s.section2: [
       {
         "id": "notif_1",
-        "time": "17:30",
-        "message":
-            "Your Recent Transaction of 230 QAR at Pizzapoint has been succesful",
-        "highlights": ["Transaction of 230 QAR", "Pizzapoint"],
+        "time": s.timeOfMessage,
+        "message": s.successfulTransactionMessage,
+        "highlights": [
+          s.succesfulTransactionHighlight1,
+          s.succesfulTransactionHighlight2,
+        ],
         "notificationtype": "check",
       },
       {
         "id": "notif_2",
-        "message": "Alqabiadi Requested a payment of 178 QAR",
-        "highlights": ["178 QAR"],
+        "message": s.paymentRequestMessage,
+        "highlights": [s.paymentRequestHighlight],
         "notificationtype": "request",
         "unread": true,
         "showButton": true,
       },
       {
         "id": "notif_3",
-        "message":
-            "Exclusive offer for you on Credit cards and Deposit accounts",
+        "message": s.creditOfferMessage,
         "highlights": [],
         "notificationtype": "percentage",
         "unread": true,
       },
       {
         "id": "notif_4",
-        "message":
-            "Your Monthly Account Statement for September 2025 is now available",
-        "highlights": ["Statement for September 2025"],
+        "message": s.accountStatementMessage,
+        "highlights": [s.accountStatementHighlight],
         "notificationtype": "statement",
       },
     ],
   },
   {
-    "date": "Yesterday",
-    "notifications": [
+    s.section1: s.dateOfMessageYesterday,
+    s.section2: [
       {
-        "id": "notif_5",
-        "time": "17:30",
-        "message":
-            "Your Recent Transaction of 230 QAR at Pizzapoint has been succesful",
-        "highlights": ["Transaction of 230 QAR", "Pizzapoint"],
+        "id": "notif_1",
+        "time": s.timeOfMessage,
+        "message": s.successfulTransactionMessage,
+        "highlights": [
+          s.succesfulTransactionHighlight1,
+          s.succesfulTransactionHighlight2,
+        ],
         "notificationtype": "check",
       },
       {
-        "id": "notif_6",
-        "message": "Alqabiadi Requested a payment of 178 QAR",
-        "highlights": ["178 QAR"],
+        "id": "notif_2",
+        "message": s.paymentRequestMessage,
+        "highlights": [s.paymentRequestHighlight],
         "notificationtype": "request",
-
+        "unread": true,
         "showButton": true,
       },
       {
-        "id": "notif_7",
-        "message":
-            "Exclusive offer for you on Credit cards and Deposit accounts",
+        "id": "notif_3",
+        "message": s.creditOfferMessage,
         "highlights": [],
         "notificationtype": "percentage",
+        "unread": true,
       },
       {
-        "id": "notif_8",
-        "message":
-            "Your Monthly Account Statement for September 2025 is now available",
-        "highlights": ["Statement for September 2025"],
+        "id": "notif_4",
+        "message": s.accountStatementMessage,
+        "highlights": [s.accountStatementHighlight],
         "notificationtype": "statement",
       },
     ],
   },
   {
-    "date": "28th September",
-    "notifications": [
+    s.section1: s.dateOfMessageSep28,
+    s.section2: [
       {
-        "id": "notif_9",
-        "time": "17:30",
-        "message":
-            "Your Recent Transaction of 230 QAR at Pizzapoint has been succesful",
-        "highlights": ["Transaction of 230 QAR", "Pizzapoint"],
+        "id": "notif_1",
+        "time": s.timeOfMessage,
+        "message": s.successfulTransactionMessage,
+        "highlights": [
+          s.succesfulTransactionHighlight1,
+          s.succesfulTransactionHighlight2,
+        ],
         "notificationtype": "check",
       },
       {
-        "id": "notif_10",
-        "message": "Alqabiadi Requested a payment of 178 QAR",
-        "highlights": ["178 QAR"],
+        "id": "notif_2",
+        "message": s.paymentRequestMessage,
+        "highlights": [s.paymentRequestHighlight],
         "notificationtype": "request",
-
+        "unread": true,
         "showButton": true,
       },
       {
-        "id": "notif_11",
-        "message":
-            "Exclusive offer for you on Credit cards and Deposit accounts",
+        "id": "notif_3",
+        "message": s.creditOfferMessage,
         "highlights": [],
         "notificationtype": "percentage",
+        "unread": true,
       },
       {
-        "id": "notif_12",
-        "message":
-            "Your Monthly Account Statement for September 2025 is now available",
-        "highlights": ["Statement for September 2025"],
+        "id": "notif_4",
+        "message": s.accountStatementMessage,
+        "highlights": [s.accountStatementHighlight],
         "notificationtype": "statement",
       },
     ],

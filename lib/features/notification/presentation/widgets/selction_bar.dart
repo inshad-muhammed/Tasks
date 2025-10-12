@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/notification.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/constants/notifications.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
@@ -9,9 +11,10 @@ class SelectionBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = DefaultStrings.instance;
     final selected = ref.watch(selectedNotificationsProvider);
     final totalCount = notificationSections
-        .expand((section) => section["notifications"])
+        .expand((section) => section[s.section2])
         .length;
     return SizedBox(
       height: SizeConfig.screenWidth * 0.12,
@@ -25,7 +28,7 @@ class SelectionBar extends ConsumerWidget {
               } else {
                 final allIds = <String>{};
                 for (var section in notificationSections) {
-                  for (var notif in section["notifications"]) {
+                  for (var notif in section[s.section2]) {
                     allIds.add('${notif["id"]}');
                   }
                 }
@@ -41,7 +44,7 @@ class SelectionBar extends ConsumerWidget {
                   size: SizeConfig.screenWidth * 0.04,
                 ),
                 Text(
-                  "Select All",
+                  s.selectAllButtonText,
                   style: TextStyle(
                     color: Color(0xff4197CB),
                     fontSize: SizeConfig.screenWidth * 0.03,
@@ -58,7 +61,7 @@ class SelectionBar extends ConsumerWidget {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          '${selected.length} notifications deleted',
+                          '${selected.length} ${s.snackBarMessage}',
                         ),
                       ),
                     );
@@ -84,7 +87,7 @@ class SelectionBar extends ConsumerWidget {
                       color: Color(0xff4197CB),
                     ),
                     Text(
-                      "Delete Notification",
+                      s.deleteButtonText,
                       style: TextStyle(
                         fontSize: SizeConfig.screenWidth * 0.03,
                         color: Color(0xff4197CB),

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/core/constants/app_strings/default_string.dart';
+import 'package:tasks/core/constants/app_strings/parts/quick_link_page.dart';
 
 class Button extends StatelessWidget {
   const Button({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final s = DefaultStrings.instance;
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
@@ -14,7 +17,7 @@ class Button extends StatelessWidget {
         onPressed: () {},
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Text("Done", style: TextStyle(color: Colors.white)),
+          child: Text(s.buttonText, style: TextStyle(color: Colors.white)),
         ),
       ),
     );

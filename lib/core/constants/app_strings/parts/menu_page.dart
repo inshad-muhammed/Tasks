@@ -2,7 +2,7 @@ import 'package:tasks/core/constants/app_strings/default_string.dart';
 import 'package:tasks/core/constants/app_strings/i18n_keys.dart';
 
 extension MenuPageString on DefaultStrings {
-  String get title => get(I18nKeys().userName, fallback: "Alqabiadi");
+  String get userName => get(I18nKeys().userName, fallback: "Alqabiadi");
   String get viewProfileButtonText =>
       get(I18nKeys().viewProfileButtonText, fallback: "View Profile");
   String get itemCard1Title =>
@@ -17,6 +17,8 @@ extension MenuPageString on DefaultStrings {
       get(I18nKeys().requestsIconTitle, fallback: "Requests");
   String get reachUsIconTitle =>
       get(I18nKeys().reachUsIconTitle, fallback: "Reach Us");
+  String get logoutIconTitle =>
+      get(I18nKeys().logoutIconTitle, fallback: "Logout");
   String get offerIconTitle =>
       get(I18nKeys().offerIconTitle, fallback: "Offers");
   String get referCardTitle =>

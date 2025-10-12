@@ -15,6 +15,7 @@ class I18nKeys {
   String get requestsIconTitle => "requestsIconTitle";
   String get reachUsIconTitle => "reachUsIconTitle";
   String get offerIconTitle => "offerIconTitle";
+  String get logoutIconTitle => "logoutIconTitle";
   String get referCardTitle => "referCardTitle";
   String get referCardDescription => "referCardDescription";
   String get referCardButtonText => "referCardButtonText";
@@ -32,12 +33,14 @@ class I18nKeys {
   String get notificationTitle => "notificationTitle";
   String get moreOption1 => "moreOption1";
   String get moreOption2 => "moreOption2";
+  String get section1 => "section1";
+  String get section2 => "section2";
   String get succesfulTransactionMessage => "succesfulTransactionMessage";
   String get succesfulTransactionHighlight1 => "SuccesfulTransactionHighlight1";
   String get succesfulTransactionHighlight2 => "SuccesfulTransactionHighlight2";
   String get paymentRequestMessage => "paymentRequestMessage";
   String get paymentRequestHighlight => "paymentRequestHighlight";
-  String get creditOfferMessage => "creditOfferMessage";
+  String get creditOfferMessage => "OfferMessage";
   String get accountStatementMessage => "accountStatementMessage";
   String get accountStatementHighlight => "accountStatementHighlight";
   String get payButtonText => "payButtonText";
@@ -51,6 +54,7 @@ class I18nKeys {
   String get filterOption1 => "filterOption1";
   String get filterOption2 => "filterOption2";
   String get filterOption3 => "filterOption3";
+  String get snackBarMessage => "snackBarMessage";
 
   //Quick Link Page Strings
   String get quickLinkTitle => "quickLinkTitle";
