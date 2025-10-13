@@ -66,7 +66,7 @@ class NotificationPage extends ConsumerWidget {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-          top: SizeConfig.screenWidth * 0.04,
+          // top: SizeConfig.screenWidth * 0.04,
           left: SizeConfig.screenWidth * 0.04,
           right: SizeConfig.screenWidth * 0.04,
         ),

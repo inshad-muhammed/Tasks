@@ -10,36 +10,47 @@ extension NotificationPageString on DefaultStrings {
       get(I18nKeys().moreOption2, fallback: "More Options");
   String get section1 => get(I18nKeys().section1, fallback: "date");
   String get section2 => get(I18nKeys().section2, fallback: "notifications");
-  String get successfulTransactionMessage => get(
-    I18nKeys().succesfulTransactionMessage,
+  String get promotionMessageTitle =>
+      get(I18nKeys().promotionMessageTitle, fallback: "Promotion");
+  String get promotionMessage => get(
+    I18nKeys().promotionMessage,
+    fallback: "Card Award Promotion Lorem Ipsum",
+  );
+  String get promotionMessageHighlight => get(
+    I18nKeys().promotionMessageHighlight,
+    fallback: "Card Award Promotion",
+  );
+  String get paymentRecieveMessageTitle =>
+      get(I18nKeys().paymentRecieveMessageTitle, fallback: "Payment Received");
+  String get paymentRecieveMessage => get(
+    I18nKeys().paymentRecieveMessage,
     fallback:
-        "Your Recent Transaction of 230 QAR at Pizzapoint has been succesful",
+        "You’ve just received 200.00 QAR in your account ending  •••• 9012",
   );
-  String get succesfulTransactionHighlight1 => get(
-    I18nKeys().succesfulTransactionHighlight1,
-    fallback: "Transaction of 230 QAR",
+  String get paymentRecieveHighlight => get(
+    I18nKeys().paymentRecieveHighlight,
+    fallback: "received 200.00 QAR in your account ending  •••• 9012",
   );
-  String get succesfulTransactionHighlight2 =>
-      get(I18nKeys().succesfulTransactionHighlight2, fallback: "Pizzapoint");
-  String get paymentRequestMessage => get(
-    I18nKeys().paymentRequestMessage,
-    fallback: "Alqabiadi Requested a payment of 178 QAR",
-  );
-  String get paymentRequestHighlight =>
-      get(I18nKeys().paymentRequestHighlight, fallback: "178 QAR");
-  String get creditOfferMessage => get(
-    I18nKeys().creditOfferMessage,
-    fallback: "Exclusive offer for you on Credit cards and Deposit accounts",
-  );
-  String get accountStatementMessage => get(
-    I18nKeys().accountStatementMessage,
+  String get maintenanceMessageTitle =>
+      get(I18nKeys().maintenanceMessageTitle, fallback: "Maintenance");
+  String get maintenanceMessage => get(
+    I18nKeys().maintenanceMessage,
     fallback:
-        "Your Monthly Account Statement for September 2025 is now available",
+        "Schedules Maintanences from 3 a.m. to 4 a.m. on Saturday, 13th January",
   );
-  String get accountStatementHighlight => get(
-    I18nKeys().accountStatementHighlight,
-    fallback: "Statement for September 2025",
+  String get maintenanceMessageHighlight => get(
+    I18nKeys().maintenanceMessageHighlight,
+    fallback: "Schedules Maintanences",
   );
+  String get utilityMessageTitle =>
+      get(I18nKeys().utilityMessageTitle, fallback: "Payment Successful");
+  String get utilityMessage => get(
+    I18nKeys().utilityMessage,
+    fallback:
+        "Utility Payments - You’ve just pay 200.00 QAR for your account ending  •••• 9012",
+  );
+  String get utilityMessageHighlight =>
+      get(I18nKeys().utilityMessageHighlight, fallback: "Utility Payments");
   String get payButtonText => get(I18nKeys().payButtonText, fallback: "Pay");
   String get markAsReadButtonText =>
       get(I18nKeys().markAsReadButtonText, fallback: "Mark as Read");
