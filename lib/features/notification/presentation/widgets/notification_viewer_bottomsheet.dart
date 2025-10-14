@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:tasks/core/utils/size_config.dart';
 
 class NotificationViewerBottomsheet extends StatelessWidget {

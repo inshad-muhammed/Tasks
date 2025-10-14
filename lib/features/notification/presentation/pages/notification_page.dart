@@ -13,6 +13,7 @@ class NotificationPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     SizeConfig.init(context);
     final s = DefaultStrings.instance;
+    final isSelectionMode = ref.watch(selectionModeProvider);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -40,20 +41,19 @@ class NotificationPage extends ConsumerWidget {
                   color: const Color(0xff446193),
                   size: SizeConfig.screenWidth * 0.06,
                 ),
-                PopupMenuButton(
-                  offset: Offset(0, kToolbarHeight),
-                  color: Colors.white,
-
-                  onSelected: (value) {
-                    if (value == 'Select') {
-                      ref.read(selectionModeProvider.notifier).state = true;
-                    }
+                GestureDetector(
+                  onTap: () {
+                    ref.read(selectionModeProvider.notifier).toggle();
+                    ref.read(selectedNotificationsProvider.notifier).state = {};
                   },
-                  itemBuilder: (BuildContext context) => [
-                    PopupMenuItem(value: 'Select', child: Text(s.moreOption1)),
-                    PopupMenuItem(value: 'More', child: Text(s.moreOption2)),
-                  ],
-                  child: Icon(Icons.more_vert),
+                  child: Text(
+                    isSelectionMode ? "Done" : "Select",
+                    style: TextStyle(
+                      color: const Color(0xff446193),
+                      fontSize: SizeConfig.screenWidth * 0.04,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -64,15 +64,7 @@ class NotificationPage extends ConsumerWidget {
           child: Divider(height: 2, color: Colors.grey.shade300),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(
-          // top: SizeConfig.screenWidth * 0.04,
-          left: SizeConfig.screenWidth * 0.04,
-          right: SizeConfig.screenWidth * 0.04,
-        ),
-
-        child: Notifications(),
-      ),
+      body: Notifications(),
     );
   }
 }

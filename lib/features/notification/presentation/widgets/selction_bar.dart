@@ -67,7 +67,7 @@ class SelectionBar extends ConsumerWidget {
                     );
                     // Reset after delete
                     ref.read(selectedNotificationsProvider.notifier).state = {};
-                    ref.read(selectionModeProvider.notifier).state = false;
+                    ref.read(selectionModeProvider.notifier).toggle();
                   },
             child: Container(
               decoration: BoxDecoration(
