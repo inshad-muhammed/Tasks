@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/controllers/notification_provider.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
 import 'package:tasks/features/notification/presentation/widgets/filter_bar.dart';
 import 'package:tasks/features/notification/presentation/widgets/notification_card.dart';
+import 'package:tasks/features/notification/presentation/widgets/notification_shimmer_effect.dart';
 import 'package:tasks/features/notification/presentation/widgets/notification_viewer_bottomsheet.dart';
 import 'package:tasks/features/notification/presentation/widgets/section_header.dart';
 import 'package:tasks/features/notification/presentation/widgets/selction_bar.dart'; // make sure this points to your model
@@ -21,7 +23,11 @@ class Notifications extends ConsumerWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: asyncSections.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => Shimmer.fromColors(
+          baseColor: Colors.grey[300]!,
+          highlightColor: Colors.grey[100]!,
+          child: NotificationShimmerEffect(),
+        ),
         error: (error, stack) => Center(child: Text("Error: $error")),
         data: (notificationSections) => SafeArea(
           child: SingleChildScrollView(

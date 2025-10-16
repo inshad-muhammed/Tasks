@@ -3,7 +3,7 @@ import 'package:tasks/core/constants/app_strings/i18n_keys.dart';
 
 extension QuickLinkPageString on DefaultStrings {
   String get quickLinkTitle =>
-      get(I18nKeys().quickLinkTitle, fallback: "Quick Links");
+      get(I18nKeys().quickLinkTitle, fallback: "Customize Quick Links");
   String get quickLinkSubtitle =>
       get(I18nKeys().quickLinkSubtitle, fallback: "Select upto 4 Options");
   String get quickLinkSubtitle1 => get(

@@ -11,6 +11,7 @@ class QuickLinkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = DefaultStrings.instance;
+
     SizeConfig.init(context);
     return Scaffold(
       backgroundColor: Colors.white,
