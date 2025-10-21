@@ -4,7 +4,7 @@ import 'package:tasks/features/menu/presentation/constants/main_card.dart';
 
 class MainCardService {
   Future<List<MainCardModel>> fetchMainCardItems() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 4));
     final response = Response(
       requestOptions: RequestOptions(path: ""),
       data: mainCardItems,

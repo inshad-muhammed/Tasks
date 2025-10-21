@@ -1,8 +1,11 @@
 class MainCardModel {
-  final String lable;
+  final String label;
   final String imagePath;
-  MainCardModel({required this.lable, required this.imagePath});
+  MainCardModel({required this.label, required this.imagePath});
   factory MainCardModel.fromJson(Map<String, dynamic> json) {
-    return MainCardModel(lable: json['lable'], imagePath: json['imagePath']);
+    return MainCardModel(
+      label: json['label'] as String,
+      imagePath: json['imagePath'] as String,
+    );
   }
 }

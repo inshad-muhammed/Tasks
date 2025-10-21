@@ -92,7 +92,7 @@ class MenuPage extends ConsumerWidget {
                       final items = mainCardItems[index];
                       return ItemCard(
                         image: items.imagePath,
-                        title: items.lable,
+                        title: items.label,
                       );
                     }),
                   ),
