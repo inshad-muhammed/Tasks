@@ -58,7 +58,7 @@ class QuickLinkPage extends StatelessWidget {
             IconWidget(),
             Spacer(),
             Padding(
-              padding: EdgeInsets.only(bottom: SizeConfig.screenWidth * 0.02),
+              padding: EdgeInsets.only(bottom: SizeConfig.screenHeight * 0.02),
               child: Button(),
             ),
           ],

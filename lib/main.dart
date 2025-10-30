@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tasks/features/menu/presentation/page/main_page.dart';
-import 'package:tasks/features/notification/presentation/pages/notification_page.dart';
 import 'package:tasks/features/quick_link/presentation/pages/quick_link.dart';
-
-import 'package:tasks/features/widget_customisation/presentation/pages/customise_widget.dart';
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));

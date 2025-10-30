@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/quick_link/presentation/controller/quick_link_provider.dart';
 import 'package:tasks/features/quick_link/presentation/controller/selection_provider.dart';
+import 'package:tasks/features/quick_link/presentation/controller/show_message_provider.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/animation_widget.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/shimmer_effect.dart';
 
@@ -13,7 +14,7 @@ class IconWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var showLimitMessage = false;
+    final showLimitMessage = ref.watch(showLimitMessageProvider);
     final selectedIndexes = ref.watch(selectedIndexesProvider);
     final asyncQuickLinks = ref.watch(quickLinksProvider);
 
@@ -28,7 +29,7 @@ class IconWidget extends ConsumerWidget {
         children: [
           Wrap(
             spacing: SizeConfig.screenWidth * 0.03,
-            runSpacing: SizeConfig.screenWidth * 0.05,
+            runSpacing: SizeConfig.screenHeight * 0.03,
             children: List.generate(labels.length, (index) {
               final item = labels[index];
               final isSelected = selectedIndexes.contains(index);
@@ -39,11 +40,13 @@ class IconWidget extends ConsumerWidget {
                     final newState = {...state};
                     if (newState.contains(index)) {
                       newState.remove(index); // Unselect
+                      ref.read(showLimitMessageProvider.notifier).state = false;
                     } else {
                       if (newState.length < 4) {
                         newState.add(index); // Select only if < 4
                       } else {
-                        showLimitMessage = true;
+                        ref.read(showLimitMessageProvider.notifier).state =
+                            true;
                       }
                     }
                     return newState;
@@ -114,15 +117,16 @@ class IconWidget extends ConsumerWidget {
               );
             }),
           ),
-          showLimitMessage
-              ? Text(
-                  "Deselect a selected option to select a new one",
-                  style: TextStyle(
-                    color: Color(0xffC65851),
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              : SizedBox(),
+          SizedBox(height: SizeConfig.screenHeight * 0.15),
+          if (showLimitMessage)
+            Text(
+              "Deselect a selected option to select a new one",
+              style: TextStyle(
+                color: Color(0xffC65851),
+                fontWeight: FontWeight.w900,
+                fontSize: SizeConfig.screenWidth * 0.036,
+              ),
+            ),
         ],
       ),
     );
