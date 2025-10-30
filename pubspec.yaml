@@ -75,7 +75,7 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
-    - assets/quick_link_icons/
+    - assets/icons/quick_link_icons/
     - assets/notification_icons/
     - assets/menu_icons/
 
