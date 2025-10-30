@@ -133,7 +133,6 @@ class IconWidget extends ConsumerWidget {
                     fontSize: SizeConfig.screenWidth * 0.036,
                   ),
                 ),
-              Button(),
             ],
           ),
         ),
