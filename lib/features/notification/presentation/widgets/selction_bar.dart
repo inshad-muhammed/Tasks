@@ -3,14 +3,13 @@ import 'package:tasks/core/constants/colors.dart';
 
 class SelectionBar extends StatelessWidget {
   final int selectedCount;
-  final int totalCount;
+
   final VoidCallback onSelectAllToggle;
   final VoidCallback onDeleteSelected;
 
   const SelectionBar({
     super.key,
     required this.selectedCount,
-    required this.totalCount,
     required this.onSelectAllToggle,
     required this.onDeleteSelected,
   });

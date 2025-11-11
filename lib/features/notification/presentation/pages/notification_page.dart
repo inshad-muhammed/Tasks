@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/features/notification/presentation/constants/notifications.dart';
-import 'package:tasks/features/notification/presentation/pages/notifications.dart';
 
-import '../../../../core/constants/colors.dart' show DefaultColors;
+import '../../../../core/constants/colors.dart';
+import '../constants/notifications.dart';
+import '../widgets/contents.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -14,7 +14,7 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   bool isSelectionMode = false;
   final Set<String> selectedIds = <String>{};
-  String selectedFilter = 'all'; // 'all' | 'unread' | 'read'
+  String selectedFilter = 'all';
 
   late final List<Map<String, dynamic>> sections;
 
@@ -44,10 +44,15 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
         actions: [
           Icon(Icons.settings_outlined, size: 18),
+          //Selct button logic
           GestureDetector(
             onTap: () {
+              // Initially selecton mode is false, when user taps on select button
+              // it will enable the selection mode.
               setState(() {
                 isSelectionMode = !isSelectionMode;
+                //after select any one notification the select button  text changes to "Done",
+                //when user taps on "Done" button it will disable the selection mode and clear selections.
                 selectedIds.clear();
               });
             },
@@ -66,7 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
         ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(2),
-          child: Divider(height: 2, color: DefaultColors.grayD4),
+          child: Divider(color: DefaultColors.grayD4),
         ),
       ),
       body: Notifications(
@@ -74,50 +79,69 @@ class _NotificationPageState extends State<NotificationPage> {
         selectedIds: selectedIds,
         onToggleSelect: (id) {
           setState(() {
+            //If the id is already selected, unselect it otherwise add it.
             if (selectedIds.contains(id)) {
+              //Remove the id from the set of selected ids.
               selectedIds.remove(id);
             } else {
+              //Add the id to the set of selected ids.
               selectedIds.add(id);
             }
           });
         },
         sections: sections,
         selectedFilter: selectedFilter,
-        onFilterAll: () => setState(() => selectedFilter = 'all'),
-        onFilterUnread: () => setState(() => selectedFilter = 'unread'),
-        onFilterRead: () => setState(() => selectedFilter = 'read'),
+        //Filter button(all)
+        onFilterAll: () =>
+            setState(() => selectedFilter = 'all'), //Filter button(all)
+        onFilterUnread: () =>
+            setState(() => selectedFilter = 'unread'), //Filter button(unread)
+        onFilterRead: () =>
+            setState(() => selectedFilter = 'read'), //Filter button(read)
+        //select all button logic
         onSelectAllToggle: () {
           setState(() {
-            final total = sections
+            // Build the set of all notification ids once
+            final allIds = sections
                 .expand(
                   (sec) =>
-                      List<Map<String, dynamic>>.from(sec["notifications"]),
+                      List<Map<String, dynamic>>.from(sec['notifications']),
                 )
-                .length;
-            if (selectedIds.length == total) {
+                .map((n) => '${n['id']}')
+                .toSet();
+
+            // If everything is already selected, clear selection;
+            if (selectedIds.length == allIds.length &&
+                selectedIds.containsAll(allIds)) {
               selectedIds.clear();
-            } else {
-              selectedIds
-                ..clear()
-                ..addAll(
-                  sections.expand(
-                    (sec) => List<Map<String, dynamic>>.from(
-                      sec["notifications"],
-                    ).map((n) => '${n['id']}'),
-                  ),
-                );
+            }
+            // If not all are selected, select all
+            else {
+              selectedIds.addAll(allIds);
             }
           });
         },
+
+        //delete notification buttonlogic
         onDeleteSelected: () {
           setState(() {
+            // Iterate over each section and remove notifications whose ids
+            // are currently present in `selectedIds`.
+            // We copy the list first to avoid changing the original while iterating,
+            // then assign the filtered list back to the section.
             for (final section in sections) {
-              final list = List<Map<String, dynamic>>.from(
-                section["notifications"],
+              //Make a copy of the notifications list for this section.
+              final current = List<Map<String, dynamic>>.from(
+                section['notifications'],
               );
-              list.removeWhere((n) => selectedIds.contains('${n['id']}'));
-              section["notifications"] = list;
+
+              //Filter out any notification 'n' whose stringified id is in selectedIds(set of notification contains selectedIds).
+              section['notifications'] = current
+                  .where((n) => !selectedIds.contains('${n['id']}'))
+                  .toList();
             }
+
+            //After deletion, clear the selection set and exit selection mode.
             selectedIds.clear();
             isSelectionMode = false;
           });
