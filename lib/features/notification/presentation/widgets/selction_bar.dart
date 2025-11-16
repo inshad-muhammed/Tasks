@@ -3,6 +3,7 @@ import 'package:tasks/core/constants/colors.dart';
 
 class SelectionBar extends StatelessWidget {
   final int selectedCount;
+  final int totalCount;
 
   final VoidCallback onSelectAllToggle;
   final VoidCallback onDeleteSelected;
@@ -10,6 +11,7 @@ class SelectionBar extends StatelessWidget {
   const SelectionBar({
     super.key,
     required this.selectedCount,
+    required this.totalCount,
     required this.onSelectAllToggle,
     required this.onDeleteSelected,
   });
@@ -37,6 +39,15 @@ class SelectionBar extends StatelessWidget {
                     color: DefaultColors.dashboarddarkBlue,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                // Show selection summary
+                Text(
+                  "$selectedCount of $totalCount",
+                  style: TextStyle(
+                    color: DefaultColors.dashboarddarkBlue,
+                    fontSize: 12,
                   ),
                 ),
               ],

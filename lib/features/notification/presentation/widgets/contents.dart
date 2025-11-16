@@ -17,6 +17,7 @@ class Notifications extends StatelessWidget {
   final VoidCallback onFilterRead;
   final VoidCallback onSelectAllToggle;
   final VoidCallback onDeleteSelected;
+  final void Function(String id) onMarkAsRead;
 
   const Notifications({
     super.key,
@@ -30,6 +31,7 @@ class Notifications extends StatelessWidget {
     required this.onFilterRead,
     required this.onSelectAllToggle,
     required this.onDeleteSelected,
+    required this.onMarkAsRead,
   });
 
   @override
@@ -53,6 +55,11 @@ class Notifications extends StatelessWidget {
     if (selectedIds.isNotEmpty) {
       return SelectionBar(
         selectedCount: selectedIds.length,
+        // Provide total unread count so SelectionBar can show or use it.
+        totalCount: sections
+            .expand((sec) => List<Map<String, dynamic>>.from(sec['notifications']))
+            .where((n) => (n['unread'] ?? false) == true)
+            .length,
         onSelectAllToggle: onSelectAllToggle,
         onDeleteSelected: onDeleteSelected,
       );
@@ -126,7 +133,7 @@ class Notifications extends StatelessWidget {
           id: id,
           message: '${notif['message']}',
           time: '${notif['time']}',
-          highlights: _normalizeHighlights(notif['highlights']),
+            highlights: _normalizeHighlights(notif['highlights']),
           notificationtype: '${notif['notificationtype']}',
           unread: (notif['unread'] ?? false) == true,
           isSelected: isSelected,
@@ -145,6 +152,15 @@ class Notifications extends StatelessWidget {
     if (isSelectionMode) {
       onToggleSelect(id);
     } else {
+      // Notify parent that this notification has been opened/read so it can
+      // update the underlying data (mark unread -> false). Parent will
+      // rebuild and the current filter (e.g., 'unread') will then exclude it.
+      try {
+        onMarkAsRead(id);
+      } catch (_) {
+        // Defensive: if parent handler throws, we still show the viewer.
+      }
+
       _showNotificationViewer(context, notif);
     }
   }

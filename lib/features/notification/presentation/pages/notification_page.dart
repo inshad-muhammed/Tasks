@@ -114,10 +114,32 @@ class _NotificationPageState extends State<NotificationPage> {
             if (selectedIds.length == allIds.length &&
                 selectedIds.containsAll(allIds)) {
               selectedIds.clear();
-            }
-            // If not all are selected, select all
-            else {
+            } else {
               selectedIds.addAll(allIds);
+            }
+          });
+        },
+        onMarkAsRead: (id) {
+          setState(() {
+            // Find the notification by id and mark it as read.
+            for (final section in sections) {
+              // Work on a shallow copy of the list and write it back to
+              // avoid mutating while iterating.
+              final list = List<Map<String, dynamic>>.from(
+                section['notifications'],
+              );
+              var updated = false;
+              for (final n in list) {
+                if ('${n['id']}' == id) {
+                  n['unread'] = false;
+                  updated = true;
+                  break;
+                }
+              }
+              if (updated) {
+                section['notifications'] = list;
+                break;
+              }
             }
           });
         },
