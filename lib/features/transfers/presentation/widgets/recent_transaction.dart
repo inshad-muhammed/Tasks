@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/constants/colors.dart';
+import 'package:tasks/features/transfers/domain/models/transaction.dart';
 import 'package:tasks/features/transfers/presentation/widgets/filter_bar_transactions.dart';
 import '../providers/transaction_filter_provider.dart';
 
@@ -10,19 +11,20 @@ class RecentTransactionSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final filtered = ref.watch(filteredTransactionsProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const FilterBarTransactions(),
-        const SizedBox(height: 16),
+        SizedBox(height: screenHeight * 0.018),
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(screenWidth * 0.02),
           width: double.infinity,
 
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(screenWidth * 0.05),
             border: Border.all(color: DefaultColors.grayD4, width: 1),
           ),
 
@@ -30,11 +32,11 @@ class RecentTransactionSection extends ConsumerWidget {
             shrinkWrap: true,
             itemCount: filtered.length,
             itemBuilder: (context, index) {
-              final transaction = filtered[index];
-              final name = transaction['name'] as String;
-              final time = transaction['time'] as String;
-              final dp = transaction['dp'] as String?;
-              final amount = transaction['amount'] as String;
+              final TransactionModel transaction = filtered[index];
+              final name = transaction.name;
+              final time = transaction.time;
+              final dp = transaction.dp;
+              final amount = transaction.amount;
               final Widget avatar;
               if (dp != null && dp.isNotEmpty) {
                 avatar = CircleAvatar(
@@ -99,7 +101,7 @@ class RecentTransactionSection extends ConsumerWidget {
               );
             },
             separatorBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
               child: const Divider(height: 1, color: DefaultColors.grayD4),
             ),
           ),

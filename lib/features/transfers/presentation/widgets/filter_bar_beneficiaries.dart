@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/constants/colors.dart';
+import '../constants/beneficiaries_static_data.dart';
 import '../providers/beneficiaries_filter_provider.dart';
 
 class FilterBarBeneficiaries extends ConsumerWidget {
@@ -9,25 +10,22 @@ class FilterBarBeneficiaries extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final screenWidth = MediaQuery.of(context).size.width;
     final selected = ref.watch(selectedFilterProviderBeneficiaries);
+    final categories = beneficiariesStatic.keys.toList();
 
-    Widget buildFilterButton(String text, List<String> values) {
-      final sel = selected;
-      final isSelected =
-          sel != null &&
-          sel.length == values.length &&
-          Set.from(sel).containsAll(values);
+    Widget buildFilterButton(String text) {
+      final isSelected = selected == text;
       return ElevatedButton(
         onPressed: () {
-          // clear selection if tapping the same button and shows full list
           ref
               .read(selectedFilterProviderBeneficiaries.notifier)
-              .update((_) => isSelected ? null : List<String>.from(values));
+              .update((_) => isSelected ? null : text);
         },
         style: ElevatedButton.styleFrom(
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(screenWidth * 0.2),
           ),
           backgroundColor: isSelected
               ? DefaultColors.dashboarddarkBlue
@@ -62,15 +60,15 @@ class FilterBarBeneficiaries extends ConsumerWidget {
             ],
           ),
           const SizedBox(width: 8),
-          buildFilterButton('Western Union', ['Attijari Bank']),
-          const SizedBox(width: 8),
-          buildFilterButton('Within Dukhan', ['Dukhan Bank (QA)']),
-          const SizedBox(width: 8),
-          buildFilterButton('Within Qatar', [
-            'Dukhan Bank (QA)',
-            'Attijari Bank',
-          ]),
-          const SizedBox(width: 8),
+          ...List.generate(categories.length, (index) {
+            final category = categories[index];
+            return Row(
+              children: [
+                buildFilterButton(category),
+                if (index != categories.length - 1) const SizedBox(width: 8),
+              ],
+            );
+          }),
         ],
       ),
     );

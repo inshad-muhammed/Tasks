@@ -13,7 +13,7 @@ class TransferMoneyCard extends StatelessWidget {
       width: double.infinity,
       height: screenWidth * 0.2,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(screenWidth * 0.046),
         gradient: LinearGradient(
           colors: [
             DefaultColors.blueLightBase,

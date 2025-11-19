@@ -9,6 +9,7 @@ class FilterBarTransactions extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final screenWidth = MediaQuery.of(context).size.width;
     final selected = ref.watch(selectedFilterProvider);
 
     Widget buildFilterButton(String text, String value) {
@@ -23,7 +24,7 @@ class FilterBarTransactions extends ConsumerWidget {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(screenWidth * 0.2),
           ),
           backgroundColor: isSelected
               ? DefaultColors.dashboarddarkBlue

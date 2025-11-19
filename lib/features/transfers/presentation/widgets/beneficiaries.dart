@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/constants/colors.dart';
 import 'package:tasks/features/transfers/presentation/widgets/filter_bar_beneficiaries.dart';
+import '../../domain/models/beneficiary.dart';
 import '../providers/beneficiaries_filter_provider.dart';
 
 class BeneficiariesSection extends ConsumerWidget {
@@ -10,36 +11,44 @@ class BeneficiariesSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final filtered = ref.watch(filteredBeneficiariesProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const FilterBarBeneficiaries(),
-        const SizedBox(height: 16),
+        SizedBox(height: screenHeight * 0.018),
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(screenWidth * 0.02),
           width: double.infinity,
 
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(screenWidth * 0.05),
             border: Border.all(color: DefaultColors.grayD4),
           ),
 
           child: ListView.separated(
             shrinkWrap: true,
-            itemCount: filtered.length,
+            itemCount: 3, //filtered.length,
             itemBuilder: (context, index) {
-              final beneficiary = filtered[index];
-              final name = beneficiary['name'] as String;
-              final accNo = beneficiary['acc_no'] as String;
-              final bank = beneficiary['bank'] as String;
-              final dp = beneficiary['dp'] as String?;
+              final Beneficiary beneficiary = filtered[index];
+              final name = beneficiary.name;
+              final accNo = beneficiary.id;
+              final bank = beneficiary.bank;
+              final avatarUrl = beneficiary.avatarUrl;
+              final localImage = beneficiary.localImage;
+
               final Widget avatar;
-              if (dp != null && dp.isNotEmpty) {
+              if (avatarUrl != null && avatarUrl.isNotEmpty) {
                 avatar = CircleAvatar(
                   radius: screenWidth * 0.064,
-                  backgroundImage: NetworkImage(dp),
+                  backgroundImage: NetworkImage(avatarUrl),
+                );
+              } else if (localImage != null && localImage.isNotEmpty) {
+                avatar = CircleAvatar(
+                  radius: screenWidth * 0.064,
+                  backgroundImage: AssetImage(localImage),
                 );
               } else {
                 // Show initials when no image provided
@@ -107,7 +116,7 @@ class BeneficiariesSection extends ConsumerWidget {
               );
             },
             separatorBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
               child: const Divider(height: 1, color: DefaultColors.grayD4),
             ),
           ),

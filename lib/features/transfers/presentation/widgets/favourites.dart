@@ -15,14 +15,14 @@ class Favourites extends StatelessWidget {
       height: screenWidth * 0.26,
 
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(screenWidth * 0.05),
         color: DefaultColors.blueLight2,
       ),
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(screenWidth * 0.05),
             // Add Button with dashed circular border
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

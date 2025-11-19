@@ -11,6 +11,7 @@ class TransferPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 20,
@@ -55,17 +56,17 @@ class TransferPage extends StatelessWidget {
             child: Column(
               children: [
                 SectionHeader(title: 'Favourites', showButton: true),
-                const SizedBox(height: 16),
+                SizedBox(height: screenHeight * 0.02),
                 Favourites(),
-                const SizedBox(height: 32),
+                SizedBox(height: screenHeight * 0.028),
                 TransferMoneyCard(),
-                const SizedBox(height: 32),
+                SizedBox(height: screenHeight * 0.028),
                 SectionHeader(title: "Recent Transactions", showButton: true),
-                const SizedBox(height: 16),
+                SizedBox(height: screenHeight * 0.02),
                 RecentTransactionSection(),
-                const SizedBox(height: 32),
+                SizedBox(height: screenHeight * 0.028),
                 SectionHeader(title: "Beneficiaries", showButton: true),
-                const SizedBox(height: 16),
+                SizedBox(height: screenHeight * 0.02),
                 BeneficiariesSection(),
               ],
             ),
