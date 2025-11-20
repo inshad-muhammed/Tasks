@@ -12,6 +12,7 @@ class BeneficiariesSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    final isSelected = ref.watch(selectedFilterProviderBeneficiaries);
     final filtered = ref.watch(filteredBeneficiariesProvider);
 
     return Column(
@@ -30,7 +31,7 @@ class BeneficiariesSection extends ConsumerWidget {
 
           child: ListView.separated(
             shrinkWrap: true,
-            itemCount: 3, //filtered.length,
+            itemCount: isSelected == null ? 4 : filtered.length,
             itemBuilder: (context, index) {
               final Beneficiary beneficiary = filtered[index];
               final name = beneficiary.name;
