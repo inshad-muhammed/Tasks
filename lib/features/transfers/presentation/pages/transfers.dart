@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/features/transfers/presentation/widgets/beneficiaries.dart';
-import 'package:tasks/features/transfers/presentation/widgets/favourites.dart';
-import 'package:tasks/features/transfers/presentation/widgets/recent_transaction.dart';
-import 'package:tasks/features/transfers/presentation/widgets/section_header.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:tasks/features/transfers/presentation/widgets/shimmer_effect.dart';
 import '../../../../core/constants/colors.dart';
+import '../providers/loading_provider.dart';
+import '../widgets/beneficiaries.dart';
+import '../widgets/favourites.dart';
+import '../widgets/recent_transaction.dart';
+import '../widgets/section_header.dart';
 import '../widgets/tranfer_money_card.dart';
 
-class TransferPage extends StatelessWidget {
+class TransferPage extends ConsumerWidget {
   const TransferPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final screenHeight = MediaQuery.of(context).size.height;
+    final isLoading = ref.watch(loadingProvider);
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 20,
@@ -38,41 +43,50 @@ class TransferPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 32,
-              left: 16,
-              right: 16,
-              bottom: 32,
+      body: isLoading
+          ? Shimmer.fromColors(
+              baseColor: DefaultColors.white_500,
+              highlightColor: DefaultColors.white_600,
+              child: ShimmerEffect(),
+            )
+          : Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 32,
+                    left: 16,
+                    right: 16,
+                    bottom: 32,
+                  ),
+                  child: Column(
+                    children: [
+                      SectionHeader(title: 'Favourites', showButton: true),
+                      SizedBox(height: screenHeight * 0.02),
+                      Favourites(),
+                      SizedBox(height: screenHeight * 0.028),
+                      TransferMoneyCard(),
+                      SizedBox(height: screenHeight * 0.028),
+                      SectionHeader(
+                        title: "Recent Transactions",
+                        showButton: true,
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      RecentTransactionSection(),
+                      SizedBox(height: screenHeight * 0.028),
+                      SectionHeader(title: "Beneficiaries", showButton: true),
+                      SizedBox(height: screenHeight * 0.02),
+                      BeneficiariesSection(),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            child: Column(
-              children: [
-                SectionHeader(title: 'Favourites', showButton: true),
-                SizedBox(height: screenHeight * 0.02),
-                Favourites(),
-                SizedBox(height: screenHeight * 0.028),
-                TransferMoneyCard(),
-                SizedBox(height: screenHeight * 0.028),
-                SectionHeader(title: "Recent Transactions", showButton: true),
-                SizedBox(height: screenHeight * 0.02),
-                RecentTransactionSection(),
-                SizedBox(height: screenHeight * 0.028),
-                SectionHeader(title: "Beneficiaries", showButton: true),
-                SizedBox(height: screenHeight * 0.02),
-                BeneficiariesSection(),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
