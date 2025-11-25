@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tasks/core/utils/size_config.dart';
+
 import 'package:tasks/features/quick_link/presentation/controller/quick_link_provider.dart';
 import 'package:tasks/features/quick_link/presentation/controller/selection_provider.dart';
 import 'package:tasks/features/quick_link/presentation/controller/show_message_provider.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/animation_widget.dart';
 import 'package:tasks/features/quick_link/presentation/widgets/shimmer_effect.dart';
+
+import '../../../../core/constants/colors.dart';
 
 class IconWidget extends ConsumerWidget {
   const IconWidget({super.key});
@@ -17,6 +19,7 @@ class IconWidget extends ConsumerWidget {
     final showLimitMessage = ref.watch(showLimitMessageProvider);
     final selectedIndexes = ref.watch(selectedIndexesProvider);
     final asyncQuickLinks = ref.watch(quickLinksProvider);
+    final screenWidth = MediaQuery.of(context).size.width;
     final theme = Theme.of(context);
 
     return asyncQuickLinks.when(
@@ -30,112 +33,116 @@ class IconWidget extends ConsumerWidget {
         child: SizedBox(
           child: Column(
             children: [
-              Wrap(
-                spacing: SizeConfig.screenWidth * 0.03,
-                runSpacing: SizeConfig.screenHeight * 0.03,
-                children: List.generate(labels.length, (index) {
-                  final item = labels[index];
-                  final isSelected = selectedIndexes.contains(index);
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Wrap(
+                  alignment: WrapAlignment.spaceBetween,
 
-                  return GestureDetector(
-                    onTap: () {
-                      ref.read(selectedIndexesProvider.notifier).update((
-                        state,
-                      ) {
-                        final newState = {...state};
-                        if (newState.contains(index)) {
-                          newState.remove(index); // Unselect
-                          ref.read(showLimitMessageProvider.notifier).state =
-                              false;
-                        } else {
-                          if (newState.length < 4) {
-                            newState.add(index); // Select only if < 4
-                          } else {
+                  runAlignment: WrapAlignment.center,
+                  spacing: 16,
+                  runSpacing: 16,
+                  children: List.generate(labels.length, (index) {
+                    final item = labels[index];
+                    final isSelected = selectedIndexes.contains(index);
+
+                    return GestureDetector(
+                      onTap: () {
+                        ref.read(selectedIndexesProvider.notifier).update((
+                          state,
+                        ) {
+                          final newState = {...state};
+                          if (newState.contains(index)) {
+                            newState.remove(index); // Unselect
                             ref.read(showLimitMessageProvider.notifier).state =
-                                true;
+                                false;
+                          } else {
+                            if (newState.length < 4) {
+                              newState.add(index); // Select only if < 4
+                            } else {
+                              ref
+                                      .read(showLimitMessageProvider.notifier)
+                                      .state =
+                                  true;
+                            }
                           }
-                        }
-                        return newState;
-                      });
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: SizeConfig.screenWidth * 0.15,
-                          height: SizeConfig.screenWidth * 0.15,
-                          child: AnimatedIconWidget(
-                            child: Stack(
-                              children: [
-                                Container(
-                                  height: SizeConfig.screenWidth * 0.13,
-                                  width: SizeConfig.screenWidth * 0.13,
-                                  decoration: BoxDecoration(
-                                    color: theme.scaffoldBackgroundColor,
-                                    border: Border.all(
-                                      color: theme.colorScheme.outline,
-                                      width: 0.5,
+                          return newState;
+                        });
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: screenWidth * 0.15,
+                            height: screenWidth * 0.15,
+                            child: AnimatedIconWidget(
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: screenWidth * 0.13,
+                                    width: screenWidth * 0.13,
+                                    decoration: BoxDecoration(
+                                      color: DefaultColors.white,
+                                      border: Border.all(
+                                        color: DefaultColors.grayD4,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
-                                    borderRadius: BorderRadius.circular(
-                                      SizeConfig.screenWidth * 0.04,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(
-                                      SizeConfig.screenWidth * 0.026,
-                                    ),
-                                    child: SvgPicture.asset(
-                                      item.imagePath,
-                                      height: SizeConfig.screenWidth * 0.01,
-                                      width: SizeConfig.screenWidth * 0.01,
-                                      fit: BoxFit.contain,
-                                      colorFilter: ColorFilter.mode(
-                                        theme.colorScheme.secondary,
-                                        BlendMode.srcIn,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(10),
+                                      child: SvgPicture.asset(
+                                        item.imagePath,
+                                        height: screenWidth * 0.01,
+                                        width: screenWidth * 0.01,
+                                        fit: BoxFit.contain,
+                                        colorFilter: ColorFilter.mode(
+                                          DefaultColors.black,
+                                          BlendMode.srcIn,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                if (isSelected)
-                                  Positioned(
-                                    bottom: 5,
-                                    right: 5,
-                                    child: Icon(
-                                      Icons.check_circle,
-                                      color: Colors.green,
-                                      size: SizeConfig.screenWidth * 0.046,
+                                  if (isSelected)
+                                    Positioned(
+                                      bottom: 5,
+                                      right: 5,
+                                      child: Icon(
+                                        Icons.check_circle,
+                                        color: DefaultColors.greenBase,
+                                        size: screenWidth * 0.046,
+                                      ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: SizeConfig.screenWidth * 0.02),
-                        SizedBox(
-                          width: SizeConfig.screenWidth * 0.2,
-                          child: Text(
-                            item.label,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: SizeConfig.screenWidth * 0.028,
-                              color: theme.colorScheme.secondary,
+                          SizedBox(height: 8),
+                          SizedBox(
+                            width: 70,
+                            child: Text(
+                              item.label,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                color: DefaultColors.black,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
               ),
               Spacer(),
               if (showLimitMessage)
                 Text(
                   "Deselect a selected option to select a new one",
                   style: TextStyle(
-                    color: theme.colorScheme.error,
+                    color: DefaultColors.redBase,
                     fontWeight: FontWeight.w900,
-                    fontSize: SizeConfig.screenWidth * 0.036,
+                    fontSize: 14,
                   ),
                 ),
             ],

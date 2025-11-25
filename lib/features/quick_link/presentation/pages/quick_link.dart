@@ -1,59 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/core/constants/app_strings/default_string.dart';
-import 'package:tasks/core/constants/app_strings/parts/quick_link_page.dart';
-import 'package:tasks/core/utils/size_config.dart';
-import 'package:tasks/features/quick_link/presentation/widgets/button.dart';
-import 'package:tasks/features/quick_link/presentation/widgets/icon.dart';
+import '../../../../core/constants/colors.dart';
+import '../widgets/button.dart';
+import '../widgets/icon.dart';
 
 class QuickLinkPage extends StatelessWidget {
   const QuickLinkPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final s = DefaultStrings.instance;
-    final theme = Theme.of(context);
-    SizeConfig.init(context);
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: DefaultColors.dashboardGray,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back, size: SizeConfig.screenWidth * 0.06),
-        leadingWidth: SizeConfig.screenWidth * 0.15,
+        toolbarHeight: 64,
+        leading: Icon(Icons.arrow_back_ios, size: 20),
+
         titleSpacing: 0,
         title: Text(
-          s.quickLinkTitle,
+          "Customize Quick Links",
           style: TextStyle(
-            // color: const Color(0xff0D3E7F),
-            fontSize: SizeConfig.screenWidth * 0.046,
+            color: DefaultColors.dashboarddarkBlue,
+            fontSize: 20,
             fontWeight: FontWeight.w900,
           ),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: SizeConfig.screenWidth * 0.05,
-          vertical: SizeConfig.screenWidth * 0.05,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              s.quickLinkSubtitle,
+              "Select upto 4 Options",
               style: TextStyle(
-                color: theme.colorScheme.secondary,
-                fontSize: SizeConfig.screenWidth * 0.056,
+                color: DefaultColors.black,
+                fontSize: 24,
                 fontWeight: FontWeight.w900,
               ),
             ),
+            SizedBox(height: 4),
             Text(
-              s.quickLinkSubtitle1,
+              "You want have quick access to",
               style: TextStyle(
-                color: theme.colorScheme.secondary,
-                fontSize: SizeConfig.screenWidth * 0.036,
+                color: DefaultColors.black,
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: SizeConfig.screenHeight * 0.03),
+            SizedBox(height: 16),
             IconWidget(),
             Button(),
           ],

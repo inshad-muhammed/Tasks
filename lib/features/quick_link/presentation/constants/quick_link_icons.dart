@@ -22,13 +22,12 @@ final List<Map<String, dynamic>> labels = [
     'imagePath': "assets/icons/quick_link_icons/requests.svg",
     'label': s.label7,
   },
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
-  {'imagePath': "assets/icons/quick_link_icons/default.svg", 'label': s.label8},
+  {
+    'imagePath': "assets/icons/quick_link_icons/default.svg",
+    'label': "Cardless Withdrawel",
+  },
+  {
+    'imagePath': "assets/icons/quick_link_icons/products.svg",
+    'label': "Fawran",
+  },
 ];

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/controllers/notification_provider.dart';
 import 'package:tasks/features/notification/presentation/controllers/selection_mode_providers.dart';
 import 'package:tasks/features/notification/presentation/widgets/filter_bar.dart';

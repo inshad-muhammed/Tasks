@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/constants/app_strings/default_string.dart';
 import 'package:tasks/core/constants/app_strings/parts/notification.dart';
-import 'package:tasks/core/utils/size_config.dart';
 import 'package:tasks/features/notification/presentation/controllers/filter_state_providers.dart';
 import 'package:tasks/features/notification/presentation/widgets/filter_button.dart';
 
