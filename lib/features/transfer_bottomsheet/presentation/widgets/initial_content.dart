@@ -12,34 +12,39 @@ class InitialContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: screenWidth * 1.27,
+      height: screenHeight * 0.56,
       child: Center(
         child: Column(
           children: [
-            SizedBox(height: 70),
+            SizedBox(height: screenHeight * 0.044),
             SizedBox(
-              width: 200,
+              width: screenWidth * 0.5,
               child: Text(
                 "Easily send money to your Dukhan Bank contacts",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 8),
-            SizedBox(
-              width: 300,
-              child: Text(
-                "Directly pay your contacts who use Dukhan Bank. No account numbers required.",
                 style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: DefaultColors.white_700,
+                  fontSize: screenWidth * 0.04,
+                  fontWeight: FontWeight.w600,
+                  color: DefaultColors.blackT,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 70),
+            SizedBox(height: screenHeight * 0.01),
+            SizedBox(
+              width: screenWidth * 0.8,
+              child: Text(
+                "Directly pay your contacts who use Dukhan Bank. No account numbers required.",
+                style: TextStyle(
+                  fontSize: screenWidth * 0.03,
+                  fontWeight: FontWeight.w500,
+                  color: DefaultColors.grayTB.withAlpha(135),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.07),
             VisibilitySelector(),
             Spacer(),
             ContinueButton(

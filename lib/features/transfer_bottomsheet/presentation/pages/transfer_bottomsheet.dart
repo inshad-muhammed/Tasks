@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasks/features/transfer_bottomsheet/presentation/widgets/bottom_sheet.dart';
+import '../widgets/drag_handle.dart';
 
 class TransferBottomsheet extends StatelessWidget {
   const TransferBottomsheet({super.key});
@@ -11,10 +12,14 @@ class TransferBottomsheet extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             showModalBottomSheet(
+              enableDrag: true,
               isScrollControlled: true,
               context: context,
               builder: (BuildContext context) {
-                return TransferBottomSheetWidget();
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [DragHandle(), TransferBottomSheetWidget()],
+                );
               },
             );
           },

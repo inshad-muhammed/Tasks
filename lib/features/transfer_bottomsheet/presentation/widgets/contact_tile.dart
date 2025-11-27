@@ -27,17 +27,15 @@ class ContactTile extends StatelessWidget {
           .join();
 
       avatar = CircleAvatar(
-        backgroundColor: Colors.white,
-        radius: screenWidth * 0.064,
-        child: CircleAvatar(
-          radius: screenWidth * 0.06,
-          backgroundColor: Colors.blue.shade100,
+        radius: screenWidth * 0.06,
+        backgroundColor: DefaultColors.dashboardBlue.withAlpha(26),
+        child: Center(
           child: Text(
             initials,
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
+            style: TextStyle(
+              color: DefaultColors.blueT1,
+              fontWeight: FontWeight.w500,
+              fontSize: screenWidth * 0.04,
             ),
           ),
         ),
@@ -45,14 +43,17 @@ class ContactTile extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(
+        vertical: screenWidth * 0.04,
+        horizontal: screenWidth * 0.036,
+      ),
       child: SizedBox(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             avatar,
-            const SizedBox(width: 12),
+            SizedBox(width: screenWidth * 0.036),
 
             // Text info
             Expanded(
@@ -62,18 +63,27 @@ class ContactTile extends StatelessWidget {
                 children: [
                   Text(
                     contact.name,
-                    style: const TextStyle(
-                      fontSize: 16,
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.04,
+                      color: DefaultColors.blackT,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
                     contact.accountNo,
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.038,
+                      color: DefaultColors.grayTB.withAlpha(153),
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   Text(
                     contact.bank,
-                    style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.038,
+                      color: DefaultColors.grayTB.withAlpha(153),
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ],
               ),
@@ -85,7 +95,7 @@ class ContactTile extends StatelessWidget {
                 Icons.star_outline,
                 color: contact.isFavorite
                     ? DefaultColors.blueT1
-                    : DefaultColors.white_700,
+                    : DefaultColors.blackT.withAlpha(51),
               ),
             ),
           ],

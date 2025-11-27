@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'DiodrumArabic'),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       home: const TransferBottomsheet(),

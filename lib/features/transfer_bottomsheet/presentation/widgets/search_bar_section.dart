@@ -13,16 +13,32 @@ class SearchBarSection extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.black),
+            border: Border.all(color: DefaultColors.grayTB.withAlpha(102)),
             borderRadius: BorderRadius.circular(30),
           ),
           width: screenWidth * 0.74,
           height: screenWidth * 0.13,
           child: TextFormField(
+            textAlign: TextAlign.center,
             decoration: InputDecoration(
+              border: UnderlineInputBorder(borderSide: BorderSide.none),
               hint: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Icon(Icons.search), Text("Type to Search")],
+                children: [
+                  Icon(
+                    Icons.search,
+                    color: DefaultColors.blueT1,
+                    size: screenWidth * 0.04,
+                  ),
+                  Text(
+                    "Type to Search",
+                    style: TextStyle(
+                      color: DefaultColors.grayTB.withAlpha(135),
+                      fontWeight: FontWeight.w400,
+                      fontSize: screenWidth * 0.04,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

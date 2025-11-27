@@ -9,41 +9,46 @@ class DeactivateVisibiltyStateScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: screenWidth * 1.27,
+      height: screenHeight * 0.56,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "Your account is private",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                fontSize: screenWidth * 0.04,
+                color: DefaultColors.blackT,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             Text(
               "Change to visible so friends can see you",
               style: TextStyle(
-                fontSize: 12,
+                fontSize: screenWidth * 0.032,
                 fontWeight: FontWeight.w500,
-                color: DefaultColors.white_700,
+                color: DefaultColors.grayTB.withAlpha(153),
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: screenHeight * 0.028),
             ElevatedButton(
               onPressed: () {
-                ref.read(contentStepProvider.notifier).state = 1;
+                ref.read(contentStepProvider.notifier).state = 4;
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: DefaultColors.white,
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(color: DefaultColors.blueT1),
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(screenWidth * 0.02),
                 ),
               ),
               child: Text(
                 "Enable Visibility",
                 style: TextStyle(
                   color: DefaultColors.blueT1,
-                  fontSize: 16,
+                  fontSize: screenWidth * 0.036,
                   fontWeight: FontWeight.w500,
                 ),
               ),

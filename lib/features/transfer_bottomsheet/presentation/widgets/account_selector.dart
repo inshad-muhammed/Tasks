@@ -26,16 +26,15 @@ class AccountSelector extends ConsumerWidget {
         child: Container(
           width: screenWidth,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(screenWidth * 0.04),
             border: Border.all(
               color: isSelected
                   ? DefaultColors.dashboardBlue
-                  : DefaultColors.white_700,
-              width: isSelected ? 1.5 : 1,
+                  : DefaultColors.grayTB.withAlpha(51),
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(screenWidth * 0.04),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -44,25 +43,27 @@ class AccountSelector extends ConsumerWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        color: DefaultColors.blackT,
+                        fontSize: screenWidth * 0.04,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     Text(
                       accountNumber,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: screenWidth * 0.036,
                         fontWeight: FontWeight.w500,
-                        color: DefaultColors.white_700,
+                        color: DefaultColors.grayTB.withAlpha(153),
                       ),
                     ),
                   ],
                 ),
                 Text(
                   balance,
-                  style: const TextStyle(
-                    fontSize: 14,
+                  style: TextStyle(
+                    color: DefaultColors.blackT,
+                    fontSize: screenWidth * 0.036,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

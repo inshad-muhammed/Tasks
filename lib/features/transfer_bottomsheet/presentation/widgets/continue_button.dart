@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/constants/colors.dart';
 
 class ContinueButton extends StatelessWidget {
@@ -18,14 +17,14 @@ class ContinueButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: DefaultColors.blueT1,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(screenWidth * 0.038),
           ),
         ),
         child: Text(
           "Continue",
           style: TextStyle(
             color: DefaultColors.white,
-            fontSize: 16,
+            fontSize: screenWidth * 0.04,
             fontWeight: FontWeight.w500,
           ),
         ),

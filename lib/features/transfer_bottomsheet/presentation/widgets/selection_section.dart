@@ -10,6 +10,7 @@ class SelectionBarSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final selected = ref.watch(selectionProvider);
 
     Widget buildFilterButton(String text) {
@@ -29,15 +30,21 @@ class SelectionBarSection extends ConsumerWidget {
             ),
             backgroundColor: isSelected
                 ? DefaultColors.dashboardBlue
-                : DefaultColors.blueLight2,
+                : DefaultColors.dashboardBlue.withAlpha(51),
             foregroundColor: isSelected
                 ? DefaultColors.white
-                : DefaultColors.dashboarddarkBlue,
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                : DefaultColors.blueT1,
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth * 0.036,
+              vertical: screenHeight * 0.01,
+            ),
           ),
           child: Text(
             text,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: screenWidth * 0.036,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       );
@@ -48,7 +55,7 @@ class SelectionBarSection extends ConsumerWidget {
       child: Row(
         children: [
           buildFilterButton('Beneficiaries'),
-          const SizedBox(width: 16),
+          SizedBox(width: screenWidth * 0.04),
           buildFilterButton('Contacts'),
         ],
       ),

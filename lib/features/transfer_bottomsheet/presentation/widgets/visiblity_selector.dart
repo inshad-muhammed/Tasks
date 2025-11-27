@@ -8,77 +8,90 @@ class VisibilitySelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final isVisible = ref.watch(visibilityProvider);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Choose your Visibility",
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-            color: DefaultColors.black,
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        color: DefaultColors.dashboardBlue.withAlpha(51),
+        borderRadius: BorderRadius.circular(screenWidth * 0.028),
+      ),
+
+      child: Padding(
+        padding: EdgeInsets.all(screenWidth * 0.028),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Choose your Visibility",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: screenWidth * 0.036, //14
+                color: DefaultColors.blackT,
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.01),
+            RadioListTile<bool>(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Activate Visibility",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.036,
+                      fontWeight: FontWeight.w600,
+                      color: DefaultColors.blackT,
+                    ),
+                  ),
+                  Text(
+                    "Contacts who have your number can see you in their list",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.03,
+                      fontWeight: FontWeight.w500,
+                      color: DefaultColors.grayTB.withAlpha(135),
+                    ),
+                  ),
+                ],
+              ),
+              value: true,
+              groupValue: isVisible,
+              onChanged: (value) {
+                ref.read(visibilityProvider.notifier).state = value!;
+              },
+            ),
+            RadioListTile<bool>(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Deactivate Visibility",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.036,
+                      fontWeight: FontWeight.w600,
+                      color: DefaultColors.blackT,
+                    ),
+                  ),
+                  Text(
+                    "You won't appear in anyone's list and can't see others",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.03,
+                      fontWeight: FontWeight.w500,
+                      color: DefaultColors.grayTB.withAlpha(135),
+                    ),
+                  ),
+                ],
+              ),
+              value: false,
+              groupValue: isVisible,
+              onChanged: (value) {
+                ref.read(visibilityProvider.notifier).state = value!;
+              },
+            ),
+          ],
         ),
-        RadioListTile<bool>(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Activate Visibility",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: DefaultColors.black,
-                ),
-              ),
-              Text(
-                "Contacts who have your number can see you in their list",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: DefaultColors.white_700,
-                ),
-              ),
-            ],
-          ),
-          value: true,
-          groupValue: isVisible,
-          onChanged: (value) {
-            ref.read(visibilityProvider.notifier).state = value!;
-          },
-        ),
-        RadioListTile<bool>(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Deactivate Visibility",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: DefaultColors.black,
-                ),
-              ),
-              Text(
-                "You won't appear in anyone's list and can't see others",
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: DefaultColors.white_700,
-                ),
-              ),
-            ],
-          ),
-          value: false,
-          groupValue: isVisible,
-          onChanged: (value) {
-            ref.read(visibilityProvider.notifier).state = value!;
-          },
-        ),
-      ],
+      ),
     );
   }
 }
