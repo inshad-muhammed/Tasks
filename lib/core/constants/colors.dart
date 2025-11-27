@@ -82,6 +82,7 @@ class DefaultColors {
   static const Color black24 = Color(0xFF242424);
   static const Color black06 = Color(0xFF060606);
   static const Color black51 = Color(0xFF515151);
+  static const Color blackT = Color(0xff222222);
 
   static const Color grayCA = Color(0xFFCACACA);
   static const Color grayF3 = Color(0xFFE0EAF3);
@@ -116,7 +117,7 @@ class DefaultColors {
   static const Color grayD4 = Color(0xFFDFE4EA);
   static const Color whiteGhost = Color(0xffF8F9FD);
   static const Color gray101 = Color(0xFFD9E5F0);
-
+  static const Color grayTB = Color(0xff63656A);
   static const Color blue9C = Color(0xFF01559C);
   static const Color blue9D = Color(0xFF00539D);
   static const Color blue9B = Color(0xFF00529B);
@@ -160,7 +161,7 @@ class DefaultColors {
   static const Color black2Re = Color(0xff334546);
   static const Color blue3 = Color(0xFF16074C);
   static const Color blue4 = Color(0xFF106EB2);
-
+  static const Color blueT1 = Color(0xff002D74);
   static const Color yellow48 = Color.fromRGBO(254, 253, 237, 1);
 
   //gradient

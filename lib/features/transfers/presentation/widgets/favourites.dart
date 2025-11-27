@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/constants/colors.dart';
 import '../constants/favourite_list.dart';
-import 'dashed_add_button.dart';
 
 class Favourites extends StatelessWidget {
   const Favourites({super.key});
@@ -21,29 +19,6 @@ class Favourites extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // DashedAddButton(
-              //   radius: screenWidth * 0.064,
-              //   dashLength: 6,
-              //   gapLength: 6,
-              //   color: DefaultColors.blueLight3,
-              //   onTap: () {},
-              //   child: CircleAvatar(
-              //     radius: screenWidth * 0.058,
-              //     backgroundColor: DefaultColors.white_1000,
-              //     child: Icon(
-              //       Icons.add,
-              //       color: DefaultColors.blueLight3,
-              //       size: screenWidth * 0.1,
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(height: 4),
-            ],
-          ),
-
           ...favouriteList.map((favourite) {
             final name = (favourite['name'] ?? '') as String;
             final dp = favourite['dp'] as String?;

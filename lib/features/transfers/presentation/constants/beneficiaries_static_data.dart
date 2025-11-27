@@ -15,6 +15,7 @@ final Map<String, List<Beneficiary>> beneficiariesStatic = {
       id: "QRXXXXXXXXXXXXXX2029",
       bank: "Attijari Bank",
       localImage: "assets/images/sara.png",
+      isFavourite: true,
     ),
     const Beneficiary(
       name: "Aliya Khan",
@@ -28,6 +29,7 @@ final Map<String, List<Beneficiary>> beneficiariesStatic = {
       name: "Sangita Raman",
       id: "XXXX8817",
       bank: "Attijari Bank",
+      isFavourite: true,
     ),
     const Beneficiary(
       name: "Yasmin Noor",

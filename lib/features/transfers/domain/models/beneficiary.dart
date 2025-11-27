@@ -8,6 +8,7 @@ class Beneficiary {
   final String bank;
   final String? avatarUrl; // optional network image
   final String? localImage; // optional local asset image path
+  final bool? isFavourite;
 
   const Beneficiary({
     required this.name,
@@ -15,5 +16,6 @@ class Beneficiary {
     required this.bank,
     this.avatarUrl,
     this.localImage,
+    this.isFavourite = false,
   });
 }
