@@ -53,6 +53,8 @@ class TransferBottomSheetWidget extends ConsumerWidget {
             //After pressing continue hides InitialContent
             if (filter == 'Beneficiaries') const Beneficiaries(),
             if (filter == 'Contacts')
+              //Before pressing continue InitialContent is displayed
+              //After pressing continue hides InitialContent
               if (step == 0) const InitialContent(),
             if (step == 1) const AccountSelectionContent(),
             if (step == 2) const DeactivateVisibiltyStateScreen(),
