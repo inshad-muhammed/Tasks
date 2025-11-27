@@ -30,4 +30,11 @@ final List<TransactionModel> transactionList = [
     time: '2 Nov, 9:49 PM',
     amount: '-5,000 QAR',
   ),
+  TransactionModel(
+    name: 'Bismillah Ali',
+    dp: '',
+    type: 'Western Union',
+    time: '5 Nov, 9:49 PM',
+    amount: '5,000 QAR',
+  ),
 ];

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/constants/colors.dart';
 import 'package:tasks/features/transfers/domain/models/transaction.dart';
-import 'package:tasks/features/transfers/presentation/widgets/filter_bar_transactions.dart';
 import '../providers/transaction_filter_provider.dart';
 
 class RecentTransactionSection extends ConsumerWidget {
@@ -11,14 +10,14 @@ class RecentTransactionSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenHeight = MediaQuery.of(context).size.height;
     final filtered = ref.watch(filteredTransactionsProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const FilterBarTransactions(),
-        SizedBox(height: screenHeight * 0.018),
+        // const FilterBarTransactions(),
+        // SizedBox(height: screenHeight * 0.018),
         Container(
           padding: EdgeInsets.all(screenWidth * 0.02),
           width: double.infinity,
@@ -29,6 +28,7 @@ class RecentTransactionSection extends ConsumerWidget {
           ),
 
           child: ListView.separated(
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             itemCount: filtered.length,
             itemBuilder: (context, index) {

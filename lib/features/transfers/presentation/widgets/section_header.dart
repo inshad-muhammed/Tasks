@@ -4,11 +4,11 @@ import '../../../../core/constants/colors.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
-  final bool showButton;
+  final bool showAddButton;
   const SectionHeader({
     super.key,
     required this.title,
-    this.showButton = false,
+    this.showAddButton = false,
   });
 
   @override
@@ -24,19 +24,27 @@ class SectionHeader extends StatelessWidget {
             color: DefaultColors.black,
           ),
         ),
-        showButton
-            ? TextButton(
-                onPressed: () {},
-                child: Text(
-                  "View All",
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: DefaultColors.blue,
-                  ),
+        Row(
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "View All",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: DefaultColors.dashboardBlue,
                 ),
-              )
-            : SizedBox(),
+              ),
+            ),
+            showAddButton
+                ? IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.add, color: DefaultColors.dashboardBlue),
+                  )
+                : SizedBox(),
+          ],
+        ),
       ],
     );
   }

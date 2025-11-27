@@ -21,31 +21,27 @@ class Favourites extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          Padding(
-            padding: EdgeInsets.all(screenWidth * 0.05),
-            // Add Button with dashed circular border
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DashedAddButton(
-                  radius: screenWidth * 0.064,
-                  dashLength: 6,
-                  gapLength: 6,
-                  color: DefaultColors.blueLight3,
-                  onTap: () {},
-                  child: CircleAvatar(
-                    radius: screenWidth * 0.058,
-                    backgroundColor: DefaultColors.white_1000,
-                    child: Icon(
-                      Icons.add,
-                      color: DefaultColors.blueLight3,
-                      size: screenWidth * 0.1,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 4),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // DashedAddButton(
+              //   radius: screenWidth * 0.064,
+              //   dashLength: 6,
+              //   gapLength: 6,
+              //   color: DefaultColors.blueLight3,
+              //   onTap: () {},
+              //   child: CircleAvatar(
+              //     radius: screenWidth * 0.058,
+              //     backgroundColor: DefaultColors.white_1000,
+              //     child: Icon(
+              //       Icons.add,
+              //       color: DefaultColors.blueLight3,
+              //       size: screenWidth * 0.1,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 4),
+            ],
           ),
 
           ...favouriteList.map((favourite) {
@@ -87,7 +83,7 @@ class Favourites extends StatelessWidget {
             }
 
             return Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

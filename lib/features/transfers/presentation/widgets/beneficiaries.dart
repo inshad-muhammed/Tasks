@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/core/constants/colors.dart';
-import 'package:tasks/features/transfers/presentation/widgets/filter_bar_beneficiaries.dart';
 import '../../domain/models/beneficiary.dart';
 import '../providers/beneficiaries_filter_provider.dart';
 
@@ -11,15 +10,15 @@ class BeneficiariesSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenHeight = MediaQuery.of(context).size.height;
     final isSelected = ref.watch(selectedFilterProviderBeneficiaries);
     final filtered = ref.watch(filteredBeneficiariesProvider);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const FilterBarBeneficiaries(),
-        SizedBox(height: screenHeight * 0.018),
+        // const FilterBarBeneficiaries(),
+        // SizedBox(height: screenHeight * 0.018),
         Container(
           padding: EdgeInsets.all(screenWidth * 0.02),
           width: double.infinity,
@@ -31,7 +30,7 @@ class BeneficiariesSection extends ConsumerWidget {
 
           child: ListView.separated(
             shrinkWrap: true,
-            itemCount: isSelected == null ? 4 : filtered.length,
+            itemCount: isSelected == null ? 5 : filtered.length,
             itemBuilder: (context, index) {
               final Beneficiary beneficiary = filtered[index];
               final name = beneficiary.name;
