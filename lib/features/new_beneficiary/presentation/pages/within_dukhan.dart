@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tasks/features/new_beneficiary/presentation/widgets/image_picker_function.dart';
+import 'package:tasks/features/new_beneficiary/presentation/widgets/image_picker.dart';
 import '../controllers/add_beneficiary_providers.dart';
 import 'package:tasks/features/new_beneficiary/presentation/widgets/info_text.dart';
 import 'package:tasks/features/new_beneficiary/presentation/widgets/succes_bottomsheet.dart';

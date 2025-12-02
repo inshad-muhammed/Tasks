@@ -1,9 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:tasks/features/transfers/presentation/constants/beneficiary_action_list.dart';
-
 import '../../../../core/constants/colors.dart';
-import '../../../dashbord/presentation/constants/select_action_list.dart';
 import '../../../dashbord/presentation/widgets/custom_bottom_sheet.dart';
 import '../../domain/models/beneficiary.dart';
 
@@ -117,7 +114,7 @@ class BeneficiaryTile extends StatelessWidget {
         ],
       ),
       trailing: IconButton(
-        color: DefaultColors.grayBase,
+        color: DefaultColors.grayTB.withAlpha(170),
         onPressed: () {
           showModalBottomSheet(
             isScrollControlled: true,

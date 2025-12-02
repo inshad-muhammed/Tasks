@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tasks/features/dashbord/presentation/widgets/drag_handle.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../domain/models/bottom_sheet_item.dart';
@@ -21,11 +22,17 @@ class CustomBottomSheet extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.all(screenWidth * 0.05),
+      padding: EdgeInsets.only(
+        bottom: screenWidth * 0.05,
+        left: screenWidth * 0.05,
+        right: screenWidth * 0.05,
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          DragHandle(),
+          SizedBox(height: screenHeight * 0.02),
           Text(
             title,
             style: TextStyle(

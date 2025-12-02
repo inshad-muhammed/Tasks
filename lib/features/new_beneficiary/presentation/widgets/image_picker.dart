@@ -18,11 +18,20 @@ class EditableAvatar extends ConsumerWidget {
       alignment: Alignment.bottomRight,
       children: [
         CircleAvatar(
-          radius: screenWidth * 0.08,
-          backgroundColor: Colors.blue.shade100,
+          radius: screenWidth * 0.09,
+          backgroundColor: DefaultColors.blueLightBase.withAlpha(56),
           backgroundImage: avatarFile != null ? FileImage(avatarFile) : null,
           child: avatarFile == null
-              ? const Text("AL", style: TextStyle(fontWeight: FontWeight.bold))
+              ? Center(
+                  child: Text(
+                    "AL",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: DefaultColors.blueT1,
+                      fontSize: screenWidth * 0.05,
+                    ),
+                  ),
+                )
               : null,
         ),
         Positioned(
