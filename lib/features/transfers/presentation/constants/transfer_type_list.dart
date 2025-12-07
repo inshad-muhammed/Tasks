@@ -12,7 +12,7 @@ List<BottomSheetItem> transferTypesList = [
   BottomSheetItem(
     leadingIcon: "assets/images/qatar.svg",
     label: "Within Qatar",
-    trailingIcon: "assets/images/qatar2.svg",
+    trailingIconUrl: "assets/images/qatar2.svg",
   ),
 
   BottomSheetItem(leadingIcon: "assets/images/fawran.svg", label: "Fawran"),

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/features/new_beneficiary/presentation/widgets/info_text.dart';
 import 'package:tasks/features/new_beneficiary/presentation/widgets/transfer_button.dart';
 
 import '../../../../core/constants/colors.dart';
+import '../controllers/add_beneficiary_providers.dart';
 
-class SuccesBottomsheet extends StatelessWidget {
+class SuccesBottomsheet extends ConsumerWidget {
   const SuccesBottomsheet({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final nickName = ref.watch(nicknameProvider);
+    final accountNumber = ref.watch(accountNumberProvider);
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Padding(
@@ -38,11 +42,11 @@ class SuccesBottomsheet extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DetailColumn(label: "Beneficiary Name", detail: "Md. Ahtiyat"),
+                DetailColumn(label: "Beneficiary Name", detail: "MD Ahtiyat"),
                 Divider(),
-                DetailColumn(label: "Nickname", detail: "Ahtiyat"),
+                DetailColumn(label: "Nickname", detail: nickName),
                 Divider(),
-                DetailColumn(label: "Account Number", detail: "200000734105"),
+                DetailColumn(label: "Account Number", detail: accountNumber),
               ],
             ),
           ),

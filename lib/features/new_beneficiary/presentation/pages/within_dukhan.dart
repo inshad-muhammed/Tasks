@@ -134,12 +134,13 @@ class AddBeneficiaryPage extends ConsumerWidget {
   Widget _buildFullProfileSection(BuildContext context, WidgetRef ref) {
     final accountNumber = ref.watch(accountNumberProvider);
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Column(
       children: [
         EditableAvatar(),
 
-        const SizedBox(height: 20),
+        SizedBox(height: screenHeight * 0.022),
 
         Text(
           "Ahtiyat Yalik",
@@ -154,7 +155,7 @@ class AddBeneficiaryPage extends ConsumerWidget {
         ),
         const Text("Doha Bank", style: TextStyle(color: Colors.grey)),
 
-        const SizedBox(height: 20),
+        SizedBox(height: screenHeight * 0.024),
 
         // Nickname Editable
         TextField(
@@ -166,12 +167,11 @@ class AddBeneficiaryPage extends ConsumerWidget {
               ref.read(nicknameProvider.notifier).state = value,
         ),
 
-        const SizedBox(height: 16),
-
+        SizedBox(height: screenHeight * 0.02),
         _buildDisabledField("Account Number", accountNumber, true),
-        const SizedBox(height: 12),
+        SizedBox(height: screenHeight * 0.016),
         _buildDisabledField("Beneficiary Name", "MD. Ahtiyat", false),
-        const SizedBox(height: 12),
+        SizedBox(height: screenHeight * 0.016),
         _buildDisabledField("Account Currency", "QAR", false),
       ],
     );

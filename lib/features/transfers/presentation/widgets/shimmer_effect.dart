@@ -50,31 +50,31 @@ class ShimmerEffect extends StatelessWidget {
               ],
             ),
             SizedBox(height: screenHeight * 0.02),
-            Row(
-              spacing: 15,
-              children: [
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-              ],
-            ),
+            // Row(
+            //   spacing: 15,
+            //   children: [
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //   ],
+            // ),
             SizedBox(height: screenHeight * 0.02),
             ...List.generate(4, (int index) {
               return Padding(
@@ -103,31 +103,31 @@ class ShimmerEffect extends StatelessWidget {
               ],
             ),
             SizedBox(height: screenHeight * 0.02),
-            Row(
-              spacing: 15,
-              children: [
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.02,
-                  color: Colors.grey,
-                ),
-              ],
-            ),
+            // Row(
+            //   spacing: 15,
+            //   children: [
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //     Container(
+            //       width: screenWidth * 0.2,
+            //       height: screenHeight * 0.02,
+            //       color: Colors.grey,
+            //     ),
+            //   ],
+            // ),
             SizedBox(height: screenHeight * 0.02),
             ...List.generate(4, (int index) {
               return Padding(

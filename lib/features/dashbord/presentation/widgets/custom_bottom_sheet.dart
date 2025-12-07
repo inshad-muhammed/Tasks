@@ -52,7 +52,7 @@ class CustomBottomSheet extends StatelessWidget {
 class BottomSheetList extends StatelessWidget {
   final List<BottomSheetItem> items;
 
-  BottomSheetList({super.key, required this.items});
+  const BottomSheetList({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -120,12 +120,8 @@ class BottomSheetList extends StatelessWidget {
   }
 
   Widget? _buildTrailing(BottomSheetItem item) {
-    if (item.trailingIcon != null) {
-      return SvgPicture.asset(item.trailingIcon!);
-    }
-
     if (item.trailingIconUrl != null) {
-      return Image.network(item.trailingIconUrl!, height: 24, width: 24);
+      return SvgPicture.asset(item.trailingIconUrl!, height: 24, width: 24);
     }
 
     return null;

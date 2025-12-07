@@ -120,11 +120,9 @@ class BeneficiaryTile extends StatelessWidget {
             isScrollControlled: true,
             context: context,
             builder: (context) {
-              return Expanded(
-                child: CustomBottomSheet(
-                  title: "Select an action",
-                  itemList: beneficiaryActionItems,
-                ),
+              return CustomBottomSheet(
+                title: "Select an action",
+                itemList: beneficiaryActionItems,
               );
             },
           );
