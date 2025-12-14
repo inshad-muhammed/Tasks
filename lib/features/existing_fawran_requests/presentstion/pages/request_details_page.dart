@@ -15,6 +15,8 @@ class RequestDetailsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final filter = ref.watch(requestFilterProvider);
     return Scaffold(
       extendBodyBehindAppBar: false,
@@ -22,14 +24,17 @@ class RequestDetailsPage extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: DefaultColors.blueT1,
         foregroundColor: DefaultColors.white,
-        leadingWidth: 20,
+        leadingWidth: screenWidth * 0.05,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, size: 20),
+          icon: Icon(Icons.arrow_back_ios_new, size: screenWidth * 0.05),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           'Fawran Requests',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          style: TextStyle(
+            fontSize: screenWidth * 0.05,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
       body: Container(
@@ -41,9 +46,12 @@ class RequestDetailsPage extends ConsumerWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+          padding: EdgeInsets.symmetric(
+            horizontal: screenWidth * 0.04,
+            vertical: screenHeight * 0.02,
+          ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RequestDetailCard(
                 name: request['name'],
@@ -52,9 +60,9 @@ class RequestDetailsPage extends ConsumerWidget {
                 status: request['status'],
                 isRecieved: filter == 'Received',
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: screenHeight * 0.03),
               _detailsContainer(),
-              const SizedBox(height: 20),
+              SizedBox(height: screenHeight * 0.03),
               _feesCard(),
               Spacer(),
 
@@ -78,17 +86,19 @@ class RequestDetailsPage extends ConsumerWidget {
                       }
                     : () {},
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: screenHeight * 0.015),
               ElevatedButtonWidget(
                 label: filter == 'received' ? "Approve and Transfer" : "Close",
-                onPressed: () {
-                  showModalBottomSheet(
-                    useSafeArea: true,
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (_) => FawranSuccessPopup(request: request),
-                  );
-                },
+                onPressed: filter == 'received'
+                    ? () {
+                        showModalBottomSheet(
+                          useSafeArea: true,
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (_) => FawranSuccessPopup(request: request),
+                        );
+                      }
+                    : () => Navigator.pop(context),
               ),
             ],
           ),

@@ -10,6 +10,8 @@ class FawranSuccessPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -17,24 +19,24 @@ class FawranSuccessPopup extends StatelessWidget {
           const DragHandle(),
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(screenWidth * 0.04),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Image.asset("assets/task_success.gif", height: 100),
-                    SizedBox(height: 16),
+                    SizedBox(height: screenHeight * 0.02),
                     Text(
-                      "transfer Successful",
+                      "Transfer Successful",
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: screenWidth * 0.046,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: screenHeight * 0.01),
                     Text(DateTime.now().toString()),
-                    SizedBox(height: 16),
+                    SizedBox(height: screenHeight * 0.02),
                     _detailsContainer(context),
-                    SizedBox(height: 24),
+                    SizedBox(height: screenHeight * 0.04),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -50,9 +52,9 @@ class FawranSuccessPopup extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 16),
+                    SizedBox(height: screenHeight * 0.02),
                     RepeatTransferButton(onPressed: () {}),
-                    SizedBox(height: 16),
+                    SizedBox(height: screenHeight * 0.02),
                     ElevatedButtonWidget(
                       label: "Close",
                       onPressed: () {

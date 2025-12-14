@@ -16,6 +16,7 @@ class TextButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
       child: TextButton(
         onPressed: onPressed,
@@ -24,14 +25,14 @@ class TextButtonWidget extends StatelessWidget {
           children: [
             if (iconPath != null) ...[
               SvgPicture.asset(iconPath!),
-              SizedBox(width: 8),
+              SizedBox(width: screenWidth * 0.02),
             ],
             Text(
               label,
               style: TextStyle(
                 color: DefaultColors.blueLightBase,
                 fontWeight: FontWeight.w500,
-                fontSize: 16,
+                fontSize: screenWidth * 0.04,
               ),
             ),
           ],
@@ -48,6 +49,8 @@ class ElevatedButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child: SizedBox(
         width: double.infinity,
@@ -55,17 +58,20 @@ class ElevatedButtonWidget extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: DefaultColors.blueT1,
-            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
+            padding: EdgeInsets.symmetric(
+              vertical: screenHeight * 0.016,
+              horizontal: screenWidth * 0.08,
+            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
             ),
           ),
           child: Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               color: DefaultColors.white,
               fontWeight: FontWeight.w500,
-              fontSize: 16,
+              fontSize: screenWidth * 0.04,
             ),
           ),
         ),
@@ -81,6 +87,8 @@ class RepeatTransferButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child: SizedBox(
         width: double.infinity,
@@ -88,7 +96,10 @@ class RepeatTransferButton extends StatelessWidget {
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
             backgroundColor: DefaultColors.white,
-            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 32),
+            padding: EdgeInsets.symmetric(
+              vertical: screenHeight * 0.016,
+              horizontal: screenWidth * 0.08,
+            ),
             shape: RoundedRectangleBorder(
               side: BorderSide(color: DefaultColors.blueT1),
               borderRadius: BorderRadius.circular(8.0),
@@ -101,10 +112,10 @@ class RepeatTransferButton extends StatelessWidget {
               SvgPicture.asset('assets/fawran_icons/repeat.svg'),
               Text(
                 "Repeat Transfer",
-                style: const TextStyle(
+                style: TextStyle(
                   color: DefaultColors.blueT1,
                   fontWeight: FontWeight.w500,
-                  fontSize: 16,
+                  fontSize: screenWidth * 0.04,
                 ),
               ),
             ],

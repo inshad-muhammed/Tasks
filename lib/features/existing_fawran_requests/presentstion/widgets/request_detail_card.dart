@@ -19,13 +19,15 @@ class RequestDetailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.bottomCenter,
       children: [
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 28),
+          padding: EdgeInsets.symmetric(vertical: screenHeight * 0.034),
           decoration: BoxDecoration(
             color: DefaultColors.blueLightBase.withAlpha(51),
             borderRadius: BorderRadius.circular(8.0),
@@ -38,16 +40,16 @@ class RequestDetailCard extends StatelessWidget {
                       children: [
                         Text(
                           '${name.toUpperCase()} Requested',
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.w600,
                             color: DefaultColors.black,
                           ),
                         ),
                         Text(
                           amount,
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.w600,
                             color: DefaultColors.black,
                           ),
@@ -58,16 +60,16 @@ class RequestDetailCard extends StatelessWidget {
                       children: [
                         Text(
                           '${amount.toUpperCase()} Requested',
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.w600,
                             color: DefaultColors.black,
                           ),
                         ),
                         Text(
                           'to $name',
-                          style: const TextStyle(
-                            fontSize: 16,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04,
                             fontWeight: FontWeight.w600,
                             color: DefaultColors.black,
                           ),
@@ -77,8 +79,8 @@ class RequestDetailCard extends StatelessWidget {
 
               Text(
                 date,
-                style: const TextStyle(
-                  fontSize: 12,
+                style: TextStyle(
+                  fontSize: screenWidth * 0.03,
                   fontWeight: FontWeight.w500,
                   color: DefaultColors.black,
                 ),
@@ -94,20 +96,20 @@ class RequestDetailCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(10),
+              padding: EdgeInsets.all(10),
               child: isRecieved
                   ? Text(
                       '$status. Approval'.toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
                         fontWeight: FontWeight.w600,
                         color: DefaultColors.blueLightBase,
                       ),
                     )
                   : Text(
                       '$status. Request'.toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 14,
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.04,
                         fontWeight: FontWeight.w600,
                         color: DefaultColors.blueLightBase,
                       ),

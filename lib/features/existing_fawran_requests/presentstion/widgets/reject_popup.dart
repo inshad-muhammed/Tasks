@@ -8,8 +8,13 @@ class RejectPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      padding: EdgeInsets.symmetric(
+        vertical: screenHeight * 0.02,
+        horizontal: screenWidth * 0.04,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -19,7 +24,7 @@ class RejectPopup extends StatelessWidget {
             style: TextStyle(
               color: DefaultColors.black,
               fontWeight: FontWeight.w600,
-              fontSize: 20,
+              fontSize: screenWidth * 0.05,
             ),
           ),
           SizedBox(
@@ -30,11 +35,11 @@ class RejectPopup extends StatelessWidget {
               style: TextStyle(
                 color: DefaultColors.gray102,
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: screenWidth * 0.04,
               ),
             ),
           ),
-          SizedBox(height: 24),
+          SizedBox(height: screenHeight * 0.032),
           TextButtonWidget(
             label: "Close",
             onPressed: () => Navigator.pop(context),
