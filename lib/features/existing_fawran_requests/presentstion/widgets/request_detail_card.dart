@@ -7,14 +7,14 @@ class RequestDetailCard extends StatelessWidget {
   final String amount;
   final String date;
   final String status;
-  final bool isRecieved;
+  final bool isReceived;
   const RequestDetailCard({
     super.key,
     required this.name,
     required this.amount,
     required this.date,
     required this.status,
-    required this.isRecieved,
+    required this.isReceived,
   });
 
   @override
@@ -35,7 +35,7 @@ class RequestDetailCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              isRecieved
+              isReceived
                   ? Column(
                       children: [
                         Text(
@@ -97,7 +97,7 @@ class RequestDetailCard extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.all(10),
-              child: isRecieved
+              child: isReceived
                   ? Text(
                       '$status. Approval'.toUpperCase(),
                       style: TextStyle(
@@ -109,7 +109,7 @@ class RequestDetailCard extends StatelessWidget {
                   : Text(
                       '$status. Request'.toUpperCase(),
                       style: TextStyle(
-                        fontSize: screenWidth * 0.04,
+                        fontSize: screenWidth * 0.036,
                         fontWeight: FontWeight.w600,
                         color: DefaultColors.blueLightBase,
                       ),

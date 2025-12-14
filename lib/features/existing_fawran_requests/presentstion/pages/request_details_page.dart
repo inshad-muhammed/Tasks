@@ -58,7 +58,7 @@ class RequestDetailsPage extends ConsumerWidget {
                 amount: request['amount'],
                 date: request['date'],
                 status: request['status'],
-                isRecieved: filter == 'Received',
+                isReceived: filter == 'received',
               ),
               SizedBox(height: screenHeight * 0.03),
               _detailsContainer(),
