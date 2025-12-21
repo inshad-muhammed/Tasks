@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tasks/features/fawran_alias/presentation/widgets/list_tile.dart';
 import '../../../../core/constants/colors.dart';
 import '../pages/alias_details_page.dart';
+import 'list_tile.dart';
 
 class AliasesList extends ConsumerWidget {
   const AliasesList({super.key});
@@ -13,7 +13,7 @@ class AliasesList extends ConsumerWidget {
     // final filter = ref.watch(aliasFilterProvider);
 
     return Padding(
-      padding: EdgeInsets.all(screenWidth * 0.02),
+      padding: EdgeInsets.all(screenWidth * 0.04),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),

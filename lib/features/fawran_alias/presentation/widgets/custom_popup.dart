@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasks/core/constants/colors.dart';
-import 'package:tasks/features/existing_fawran_requests/presentstion/widgets/buttons.dart';
+import 'buttons.dart';
 
 class CustomPopup extends StatelessWidget {
   final String title;
